@@ -1,0 +1,28 @@
+---
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+http:
+  server_host: 0.0.0.0
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+  use_x_forwarded_for: true
+  trusted_proxies:
+  # Pod CIDR
+  - 10.69.0.0/16
+  # Node CIDR
+  - 192.168.30.0/24
+  - 192.168.10.0/24
+  - 192.168.20.0/24
+
+recorder:
+  db_url: !env_var postgresql_uri
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
