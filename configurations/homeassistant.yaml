@@ -1,0 +1,34 @@
+---
+# Home Assistant Core Configuation
+
+http:
+  server_host: 0.0.0.0
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+  use_x_forwarded_for: true
+  trusted_proxies:
+  # Pod CIDR
+  - 10.69.0.0/16
+  # Node CIDR
+  - 192.168.30.0/24
+  - 192.168.10.0/24
+  - 192.168.20.0/24
+
+recorder:
+  db_url: !env_var postgresql_uri
+    
+shell_command:
+  update_config: cd /config && git pull
+
+automation:
+  # Update Configuration on Github Push Event
+- id: update_config_github_push_event
+  alias: Update Configuration on Github Push Event
+
+  trigger:
+  - platform: webhook
+    webhook_id: update_config
+
+  action:
+  - service: shell_command.update_config
+  - service: homeassistant.restart
