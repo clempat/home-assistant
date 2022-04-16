@@ -1,0 +1,19 @@
+---
+# Groups and notifiactions
+
+notify:
+  - name: mobiles
+    platform: group
+    services:
+      - service: mobile_app_clement
+
+  - name: tablets
+    platform: group
+    services:
+      - service: mobile_app_ipad_de_clement
+
+  - name: all
+    platform: group
+    services:
+      - service: mobiles
+      - service: tablets
