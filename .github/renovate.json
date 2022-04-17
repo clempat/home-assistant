@@ -1,0 +1,9 @@
+{
+    "enabled": true,
+    "semanticCommits": "enabled",
+    "labels": ["renovatebot"],
+    "commitBody": "Signed-Off-by: Clément Patout <clement.patout@gmail.com>",
+    "semanticCommitScope": "images",
+    "rebaseWhen": "conflicted",
+    "automerge": false
+}
