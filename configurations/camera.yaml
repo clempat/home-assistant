@@ -1,0 +1,25 @@
+---
+# Camera Integration
+# The camera integration allows you to use IP cameras with Home Assistant.
+#
+# https://www.home-assistant.io/integrations/camera/
+
+camera:
+  #  - platform: generic
+  #    name: Jardin (Generic)
+  #    still_image_url: !secret reolink_garden_image_url
+  #    stream_source: !secret reolink_garden_rtsp
+  - platform: ffmpeg
+    name: Jardin (ffmpeg)
+    input: !env_var reolink_garden_rtsp
+  - platform: proxy
+    name: gate
+    entity_id: camera.jardin_ffmpeg
+    image_left: 400
+    image_top: 240
+    image_quality: 100
+    max_image_width: 750
+    max_image_height: 410
+    max_stream_width: 750
+    max_stream_height: 410
+    mode: crop
