@@ -24,6 +24,7 @@ logger:
   default: critical
   logs:
     homeassistant.components.homekit_controller: debug
+    aiohomekit: debug
 
 automation:
 # Update Configuration on Github Push Event
