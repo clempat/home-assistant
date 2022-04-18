@@ -20,8 +20,13 @@ recorder:
 shell_command:
   update_config: cd /config && git pull
 
+logger:
+  default: critical
+  logs:
+    homeassistant.components.homekit_controller: debug
+
 automation:
-  # Update Configuration on Github Push Event
+# Update Configuration on Github Push Event
 - id: update_config_github_push_event
   alias: Update Configuration on Github Push Event
 
