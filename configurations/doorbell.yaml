@@ -1,0 +1,67 @@
+---
+# Doorbell
+automation:
+  - id: d55b74d0-2f13-47e2-a4ed-5ad5e97e53d5
+    alias: "Doorbell >> Ding Dong"
+    description: "Run Notifications when someone trigger doorbell"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.doorbell
+        from: "off"
+        to: "on"
+
+    action:
+      - service: sonos.snapshot
+        entity_id: all
+      - alias: "Play SNCF on sonos"
+        service: script.notify_sncf_sonos
+      - service: sonos.restore
+        entity_id: all
+      - alias: "Send Notification"
+        service: notify.mobiles
+        data:
+          title: "🛎 Sonnette"
+          message: "Quelqu'un viens de sonner!"
+          data:
+            group: "doorbell"
+            tag: "doorbell-triggered"
+            entity_id: camera.gate
+            actions:
+              - action: "OPEN_GATE"
+                title: "Ouvrir"
+
+  - id: d35d340e-f3c4-4e44-9999-77d0f6cfe42f
+    alias: "Doorbell >> Open Door Buttons"
+    description: "Open doors when buttons are pushed"
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: x_switch_kitchen_2
+          event: 2002
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: x_door_switch
+          event: 1002
+      - platform: event
+        event_type:
+          - ios.notification_action_fired
+          - ios.action_fired
+        event_data:
+          actionName: OPEN_GATE
+    action:
+      service: script.open_gate
+
+script:
+  open_gate:
+    alias: Open Gate
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.gate_open_switch
+      - alias: "Clear Notification"
+        service: notify.mobiles
+        data:
+          message: "clear_notification"
+          data:
+            tag: "doorbell-triggered"
