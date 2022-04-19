@@ -1,0 +1,197 @@
+---
+# Here is all about times and house state
+# sleep > waking_up > morning > lunch > afternoon > evening > night
+
+input_select:
+  time_of_day:
+    name: Moment du jour
+    options:
+      - Dormir
+      - Lever # kids waking up
+      - Matin # All wake up
+      - Midi
+      - Après Midi # Débute quand les enfants rentre ?
+      - Soir # Débute quand les enfants dorment ?
+      - Nuit
+
+binary_sensor:
+  - platform: workday
+    country: DE
+    province: BE
+
+automation:
+  # Detect Sleeping
+  - description: Change to sleeping when main light are off
+    id: a54a648c-54ba-4166-821f-3e2d14955f63
+    alias: Times >> Detect Sleeping Mode
+    trigger:
+      - platform: state
+        entity_id: light.rez_de_chaussee
+        to: "off"
+        for:
+          minutes: 5
+      - platform: state
+        entity_id: light.cellar_bedroom
+        to: "off"
+        for:
+          minutes: 5
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: light.cellar_bedroom
+          state: "off"
+        - condition: state
+          entity_id: light.rez_de_chaussee
+          state: "off"
+        - condition: time
+          after: "20:30:00"
+          before: "03:00:00"
+        - condition: state
+          entity_id: sun.sun
+          state: below_horizon
+        - condition: state
+          entity_id: input_select.time_of_day
+          state:
+            - "Nuit"
+            - "Soir"
+    action:
+      - service: input_select.select_option
+        entity_id: input_select.time_of_day
+        data:
+          option: Dormir
+
+  # Detect Kids waking up (Light in bedroom more than night mode)
+  - description: Change to Waking up when kids up
+    alias: Time >> Waking up
+    id: 3764fd70-2b2c-47ac-b0a9-ab9f37b8825c
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - light.florian_bedroom
+          - light.mina_and_clara_bedroom
+        attribute: brightness
+        above: 30
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: "05:00:00"
+          before: "10:00:00"
+        - condition: state
+          entity_id: input_select.time_of_day
+          state: "Dormir"
+    action:
+      - service: input_select.select_option
+        entity_id: input_select.time_of_day
+        data:
+          option: Lever
+
+  # Detect when morning start - Open covers ?
+  - description: Change to Morning when covers open
+    alias: Time >> Morning
+    id: 469ece04-406d-4122-b035-528aaf6bd011
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - cover.bedroom_cover_left
+          - cover.bedroom_cover_right
+          - cover.bedroom_flo
+        attribute: current_position
+        above: 30
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: "06:00:00"
+          before: "11:00:00"
+    action:
+      - service: input_select.select_option
+        entity_id: input_select.time_of_day
+        data:
+          option: Matin
+
+  # Detect Lunch > 12:00 or when plan on
+  - description: Change to Lunch when cooking or 12:00
+    alias: Time >> Lunch
+    id: 9fb7ae7b-53cf-49cc-a7a7-99bfee51f2ad
+    trigger:
+      - platform: time
+        at: "12:00:00"
+      - platform: state
+        entity_id: switch.plug_kitchen_plan
+        to: "on"
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: "11:00:00"
+          before: "14:00:00"
+        - condition: state
+          entity_id: input_select.time_of_day
+          state: "Matin"
+    action:
+      - service: input_select.select_option
+        entity_id: input_select.time_of_day
+        data:
+          option: Midi
+
+  - description: Change to Afternoon when kids are back
+    alias: Time >> Afternoon
+    id: 1b903326-870f-4e0a-bb97-74666e2517bb
+    trigger:
+      - platform: time
+        at: "16:00:00"
+      #TODO: When battery is back
+    action:
+      - service: input_select.select_option
+        entity_id: input_select.time_of_day
+        data:
+          option: Après Midi
+
+  - description: Change to Evening when kids sleeping
+    alias: Time >> Evening
+    id: 09e879ec-68e6-4b56-8803-707f4f96a366
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - light.kids_rooms
+        attribute: brightness
+        below: 30
+        for:
+          minutes: 10
+      - platform: numeric_state
+        entity_id:
+          - cover.first_floor
+        attribute: current_position
+        below: 20
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: "17:00:00"
+          before: "22:00:00"
+        - condition: state
+          entity_id: input_select.time_of_day
+          state: "Après Midi"
+        - alias: "Low light"
+          condition: template
+          value_template: "{{  state_attr('light.kids_rooms', 'brightness') | int < 30 }}"
+        - alias: "covers down"
+          condition: template
+          value_template: "{{  state_attr('cover.first_floor', 'current_position') | int < 20 }}"
+    action:
+      - service: input_select.select_option
+        entity_id: input_select.time_of_day
+        data:
+          option: Soir
+
+calendar:
+  - platform: todoist
+    token: !secret todoist_token
+  # I need to find how to use env for calendars
+  # - platform: caldav
+  #   url: !secret caldav_fastmail_url
+  #   username: !secret fastmail_user
+  #   password: !secret fastmail_password
+  #   calendars: !secret fastmail_calendars
