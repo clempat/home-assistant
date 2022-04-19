@@ -1,0 +1,70 @@
+blueprint:
+  name: Windows - Heating
+  description: |
+    This will turn off the heating when a windows is open.
+    When the windows get closed it goes back to its previous state.
+  domain: automation
+  input:
+    windows:
+      name: Windows
+      description: Binary sensor representing all windows of a room
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: opening
+    delay:
+      name: Delay
+      description: Delay between the windows being closed/opened and the heating updates (seconds)
+      default: 0
+      selector:
+        number:
+          min: 0.0
+          max: 120.0
+          unit_of_measurement: seconds
+          step: 1.0
+          mode: slider
+    climate:
+      name: Thermostat
+      description: Thermostat attached to the room controling the heating.
+      selector:
+        entity:
+          domain: climate
+  source_url: https://gist.github.com/clempat/b2534120c51307d0c36b94e143594cba
+trigger:
+  platform: state
+  entity_id: !input "windows"
+  for:
+    seconds: !input "delay"
+action:
+  # in order to use in template
+  - variables:
+      climate_input: !input "climate"
+      climate_object_id: "{{ states[climate_input].object_id }}"
+      prev_scene_id: "prev_state_climate_{{climate_object_id}}"
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: '{{ trigger.to_state.state != trigger.from_state.state and trigger.to_state.state == "on" }}'
+        sequence:
+          - service: scene.create
+            data_template:
+              scene_id: "{{prev_scene_id}}"
+              snapshot_entities: !input "climate"
+          - service: climate.turn_off
+            entity_id: !input "climate"
+    default:
+      - condition: template
+        value_template: "{{trigger.to_state.state != trigger.from_state.state}}"
+      - service: >
+          {% if states("scene." ~ prev_scene_id) != "unknown" %}
+            scene.turn_on
+          {% else %}
+            climate.turn_on
+          {% endif %}
+        data:
+          entity_id: >
+            {% if states("scene." ~ prev_scene_id) != "unknown" %}
+              scene.{{prev_scene_id}}
+            {% else %}
+              {{climate_input}}
+            {% endif %}

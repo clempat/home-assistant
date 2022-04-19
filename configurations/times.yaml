@@ -188,7 +188,7 @@ automation:
 
 calendar:
   - platform: todoist
-    token: !secret todoist_token
+    token: !env_var todoist_token
   # I need to find how to use env for calendars
   # - platform: caldav
   #   url: !secret caldav_fastmail_url
