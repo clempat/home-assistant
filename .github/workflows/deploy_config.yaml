@@ -18,7 +18,7 @@ jobs:
           ha_image=`docker run --rm -v /tmp:/workdir mikefarah/yq:4.24.5 e '.spec.template.spec.containers[0].image' deployment.yaml`
           echo "Docker Image: $ha_image"
           echo "::set-output name=ha_image::$ha_image"
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run Test again version
         run: |
           docker pull -q "${{ steps.fetch_version.outputs.ha_image }}"
