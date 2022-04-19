@@ -17,6 +17,8 @@ automation:
         service: script.notify_sncf_sonos
       - service: sonos.restore
         entity_id: all
+      - alias: "Display camera feed"
+        service: script.display_gate_stream
       - alias: "Send Notification"
         service: notify.mobiles
         data:
