@@ -17,3 +17,18 @@ notify:
     services:
       - service: mobiles
       - service: tablets
+
+# SNCF to all sonos
+script:
+  notify_sncf_sonos:
+    alias: "Notify >> SNCF to all sonos"
+    sequence:
+      - service: media_player.play_media
+        target:
+          device_id:
+            - 93f26719cdbdf4a06f250f6c55ee0f91
+            - efbb94e5bc0d6e928cc1c6d9ea726d43
+            - 2fd4b87500f6d870834132435d51e5d6
+        data:
+          media_content_id: media-source://media_source/local/sounds/sncf_new.wav
+          media_content_type: music
