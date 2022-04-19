@@ -3,13 +3,40 @@ name: Deploy Config
 on:
   workflow_dispatch:
   push:
-    branches: [ '*' ]
+    branches: ["*"]
 
 jobs:
+  check_ha_config:
+    name: Check Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - id: fetch_version
+        name: Fetch Version From Cluster repo
+        run: |
+          docker pull -q "mikefarah/yq:4.24.5"
+          wget https://raw.githubusercontent.com/clempat/home-cluster/main/cluster/apps/home-system/homeassistant/deployment.yaml -P /tmp
+          ha_image=`docker run --rm -v /tmp:/workdir mikefarah/yq:4.24.5 e '.spec.template.spec.containers[0].image' deployment.yaml`
+          echo "Docker Image: $ha_image"
+          echo "::set-output name=ha_image::$ha_image"
+      - uses: actions/checkout@v2
+      - name: Run Test again version
+        run: |
+          docker pull -q "${{ steps.fetch_version.outputs.ha_image }}"
+
+          find . -type f -name "*.yaml" -print0 | xargs -0 sed -i 's/\!env_var .*$/xxxxxxxxx/g'
+          echo [] > automations.yaml
+          echo [] > scripts.yaml
+          echo [] > scenes.yaml
+
+          docker run --rm -v "$(pwd):/config" --entrypoint "" \
+          ${{ steps.fetch_version.outputs.ha_image }} \
+          python -m homeassistant --config "/config" --script check_config
+
   deploy_config:
     runs-on: ubuntu-latest
+    needs: check_ha_config
     steps:
       - uses: joelwmale/webhook-action@2.1.0
         with:
           url: ${{ secrets.HASS_WEBHOOK_URL }}/update_config
-          body: '{}'
+          body: "{}"
