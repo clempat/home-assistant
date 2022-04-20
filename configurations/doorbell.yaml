@@ -11,14 +11,11 @@ automation:
         to: "on"
 
     action:
-      - service: sonos.snapshot
-        entity_id: all
       - alias: "Play SNCF on sonos"
-        service: script.notify_sncf_sonos
-      - service: sonos.restore
-        entity_id: all
-      - alias: "Display camera feed"
-        service: script.display_gate_stream
+        service: script.notify_sncf_sono
+      # Did not work with proxy camera
+      # - alias: "Display camera feed"
+      #  service: script.display_gate_stream
       - alias: "Send Notification"
         service: notify.mobiles
         data:
