@@ -17,3 +17,31 @@ notify:
     services:
       - service: mobiles
       - service: tablets
+
+script:
+  run_live:
+    alias: Run Live
+    sequence:
+    - service: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.switchbotone_switch
+    - choose:
+      - conditions:
+        - condition: state
+          entity_id: input_boolean.live
+          state: 'on'
+        sequence:
+        - service: input_boolean.turn_off
+          data: {}
+          target:
+            entity_id: input_boolean.live
+        - scene: scene.clement_not_live
+      default:
+      - service: input_boolean.turn_on
+        data: {}
+        target:
+          entity_id: input_boolean.live
+      - scene: scene.clement_live
+    mode: single
+    icon: mdi:record-circle

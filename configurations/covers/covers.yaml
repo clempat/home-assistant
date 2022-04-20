@@ -51,7 +51,7 @@ script:
     description: Script to be run when I say good night to any assistant
     sequence:
       - service: scene.turn_on
-        entity_id: scene.cover_night_upstairs
+        entity_id: scene.covers_night_upstairs
       - condition: state
         entity_id: sun.sun
         state: "below_horizon"

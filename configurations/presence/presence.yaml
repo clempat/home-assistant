@@ -1,0 +1,144 @@
+---
+# Presence
+# All about presence détection
+##
+
+# Espresence
+sensor:
+  - platform: mqtt_room
+    state_topic: "espresense/rooms"
+    device_id: "apple:1005:9-24"
+    name: "Clément Watch (BLE)"
+  - platform: mqtt_room
+    state_topic: "espresense/rooms"
+    device_id: "tile:fd34305fd839"
+    name: "Battery Bike (BLE)"
+  - platform: mqtt_room
+    state_topic: "espresense/rooms"
+    device_id: "tile:f94c1f0d43a7"
+    name: "Melanie Keys (BLE)"
+  - platform: mqtt_room
+    state_topic: "espresense/rooms"
+    device_id: "apple:iphone13-2"
+    name: "Clément phone (BLE)"
+
+# Motion groups
+binary_sensor:
+  - platform: template
+    sensors:
+      motion_problem:
+        friendly_name: Problème détecteur de mouvement
+        device_class: problem
+        value_template: >-
+          {{ states.binary_sensor | selectattr('attributes.device_class', 'eq', 'motion') | selectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0}}
+        attribute_templates:
+          entity_id: >-
+            {{ states.binary_sensor | selectattr('attributes.device_class', 'eq', 'motion') | selectattr('state', 'in', ['unavailable', 'unknown']) | map(attribute='entity_id') | list }}
+
+      motion_stairs_first_floor:
+        friendly_name: "Escalier 1er"
+        device_class: motion
+        value_template: >
+          {{ 
+            is_state('binary_sensor.x_motion_stairs_first_floor', 'on') 
+            or is_state('binary_sensor.x_motion_stairs_ground_floor_up', 'on') 
+            or is_state('binary_sensor.hue_motion_stairs', 'on') 
+          }}
+
+      motion_stairs_cellar:
+        friendly_name: "Escalier Cave"
+        device_class: motion
+        value_template: >
+          {{
+            is_state('binary_sensor.x_motion_stairs_groundfloor_down', 'on')
+            or is_state('binary_sensor.x_motion_cellar_stairs', 'on')
+          }}
+
+      motion_stairs_ground_floor:
+        friendly_name: "Escalier RDC"
+        device_class: motion
+        value_template: >
+          {{ 
+            is_state('binary_sensor.x_motion_stairs_ground_floor', 'on') 
+            or is_state('binary_sensor.x_motion_stairs_ground_floor_up', 'on') 
+            or is_state('binary_sensor.x_motion_stairs_ground_floor_down', 'on') 
+          }}
+
+      motion_stairs:
+        friendly_name: "Escalier"
+        device_class: motion
+        value_template: >
+          {{ 
+            is_state('binary_sensor.motion_stairs_first_floor', 'on')
+            or is_state('binary_sensor.motion_stairs_ground_floor', 'on')
+            or is_state('binary_sensor.motion_stairs_cellar', 'on')
+            or is_state('binary_sensor.hue_motion_stairs', 'on')
+          }}
+
+      motion_outside:
+        friendly_name: "Dehors"
+        device_class: motion
+        value_template: >
+          {{
+            is_state('binary_sensor.hue_motion_outside_door', 'on')
+            or is_state('binary_sensor.hue_motion_outside_2', 'on')
+          }}
+
+      motion_entrance:
+        friendly_name: "Entrée"
+        device_class: motion
+        value_template: >
+          {{ 
+            is_state('binary_sensor.x_motion_entrance_2', 'on') 
+            or is_state('binary_sensor.x_motion_entrance_door', 'on') 
+          }}
+
+      motion_kitchen:
+        friendly_name: "Cuisine"
+        device_class: motion
+        value_template: >
+          {{
+            is_state('binary_sensor.x_motion_kitchen_floor', 'on')
+            or is_state('binary_sensor.x_motion_kitchen', 'on')
+          }}
+
+      motion_ground_floor:
+        device_class: motion
+        friendly_name: "Mouvement Rez de chaussé"
+        value_template: >
+          {{ 
+            is_state('binary_sensor.motion_stairs', 'on')
+            or is_state('binary_sensor.x_motion_stairs_ground_floor_down', 'on') 
+            or is_state('binary_sensor.motion_cellar', 'on')
+            or is_state('binary_sensor.motion_entrance', 'on')
+            or is_state('binary_sensor.x_motion_kitchen_floor', on)
+          }}
+
+      motion_cellar_wine:
+        friendly_name: "Cave à vin"
+        device_class: motion
+        value_template: >
+          {{
+            is_state('binary_sensor.ikea_motion_cellar_wine_roof', 'on')
+            or is_state('binary_sensor.ikea_motion_cellar_wine', 'on')
+          }}
+
+      motion_cellar_entrance:
+        friendly_name: "Entrée Cave"
+        device_class: motion
+        value_template: >
+          {{
+            is_state('binary_sensor.ikea_motion_cellar_entrance', 'on')
+            or is_state('binary_sensor.x_vibration_door_cellar', 'on')
+          }}
+
+      motion_all:
+        device_class: motion
+        friendly_name: "Mouvement Maison"
+        value_template: >
+          {{ 
+            is_state('binary_sensor.motion_stairs', 'on')
+            or is_state('binary_sensor.motion_cellar', 'on')
+            or is_state('binary_sensor.motion_entrance', 'on')
+            or is_state('binary_sensor.x_motion_kitchen_floor', on)
+          }}
