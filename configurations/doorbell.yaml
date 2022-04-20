@@ -12,7 +12,7 @@ automation:
 
     action:
       - alias: "Play SNCF on sonos"
-        service: script.notify_sncf_sono
+        service: script.notify_sncf_sonos
       # Did not work with proxy camera
       # - alias: "Display camera feed"
       #  service: script.display_gate_stream
