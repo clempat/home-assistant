@@ -1,0 +1,96 @@
+---
+input_boolean:
+  washing_machine_full:
+    name: Machine Pleine
+    icon: mdi:washing-machine-alert
+
+binary_sensor:
+  - platform: template
+    sensors:
+      dryer:
+        icon_template: >-
+          {% if states('sensor.dryer_w') | int > 5 %}
+            mdi:washing-machine
+          {% else %}
+            mdi:washing-machine-off
+          {% endif %}
+        friendly_name: Sèche linge
+        delay_off:
+          minutes: 1
+        value_template: >
+          {%- set state = states('sensor.dryer_w') -%}
+          {%- if is_number(state) -%}
+            {{ state | int > 5 }}
+          {%- else -%}
+            unknown
+          {%- endif -%}
+
+  - platform: template
+    sensors:
+      washing_machine:
+        icon_template: >-
+          {% if states('sensor.washing_machine_w') | int > 5 %}
+            mdi:washing-machine
+          {% else %}
+            mdi:washing-machine-off
+          {% endif %}
+        friendly_name: Machine à laver
+        delay_off:
+          minutes: 2
+        value_template: >-
+          {{  states('sensor.washing_machine_w') | int > 5 }}
+
+automation:
+  - alias: turn_on_washing_machine_full
+    description: Turn on Washing machine full when finished to run
+    id: 11a9f05c-df21-495b-aa15-bfab293669a4
+    trigger:
+      platform: state
+      entity_id: binary_sensor.washing_machine
+      from: "on"
+      to: "off"
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.washing_machine_full
+      - service: notify.mobiles
+        data:
+          title: "🧺 Machine à Laver"
+          message: "La machine à laver est pleine."
+          data:
+            group: 'washing-machine'
+            tag: 'washing-machine'
+
+  - alias: turn_off_washing_machine_full
+    description: Turn off Washing machine full when door is open or washing machine restart
+    id: 65249100-81ef-4f2a-be55-cc0b9b566b59
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.washing_machine
+        to: "on"
+      - platform: state
+        entity_id: binary_sensor.x_door_washing_machine
+        to: "on"
+    action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.washing_machine_full
+      - service: notify.mobiles
+        data:
+          message: "clear_notification"
+          data:
+            tag: 'washing-machine'
+
+  - alias: add_task_washing_machine_full
+    description: Add Todoist task when the washing machine is full
+    id: a4b5050d-2d4e-4f03-b153-a879c862194e
+
+    trigger:
+      - platform: state
+        entity_id: input_boolean.washing_machine_full
+        from: "off"
+        to: "on"
+    action:
+      service: todoist.new_task
+      data:
+        content: 🧺 Sortir le linge de la machine à laver
+        due_date_string: Aujourd'hui
+        due_date_lang: fr

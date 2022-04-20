@@ -17,6 +17,7 @@ Notification visual, sounds and other.
 - Cast
 - Discord (For technical notification)
 - IOS Companion (For other notifications)
+- Todoist (To add tasks)
 
 # Features
 
