@@ -175,7 +175,7 @@ automation:
           entity_id: light.hue_melanie_office_sofa
           
   - id: d8f3dd82-0192-400c-bb57-236c00ce6e12
-    alias: Lights >> Activate live scene round buuton
+    alias: Lights >> Activate live scene round button
 
     trigger:
       platform: event

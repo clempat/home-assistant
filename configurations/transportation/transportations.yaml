@@ -1,0 +1,57 @@
+---
+
+sensor:
+  - platform: deutsche_bahn
+    from: Berlin Attilastr.
+    to: Berlin Nordbahnhof
+    only_direct: true
+
+  - platform: deutsche_bahn
+    from: Berlin Nordbahnhof
+    to: Berlin Attilastr.
+    only_direct: true
+
+  - platform: deutsche_bahn
+    from: Berlin Südende
+    to: Berlin Nordbahnhof
+    only_direct: true
+
+  - platform: deutsche_bahn
+    from: Berlin Nordbahnhof
+    to: Berlin Südende
+    only_direct: true
+
+  - platform: deutsche_bahn
+    from: Berlin Attilastr.
+    to: Berlin Anhalter Bf
+    only_direct: true
+
+  - platform: deutsche_bahn
+    from: Berlin Anhalter Bf
+    to: Berlin Attilastr.
+    only_direct: true
+
+  - platform: deutsche_bahn
+    from: Berlin Südende
+    to: Berlin Anhalter Bf
+    only_direct: true
+
+  - platform: deutsche_bahn
+    from: Berlin Anhalter Bf
+    to: Berlin Südende
+    only_direct: true
+
+  - platform: template
+    sensors:
+      attilastr:
+        friendly_name: S2
+        value_template: >
+          {{ states('sensor.berlin_attilastr_to_berlin_nordbahnhof') }},
+          {{ state_attr('sensor.berlin_attilastr_to_berlin_nordbahnhof', 'next') }},
+          {{ state_attr('sensor.berlin_attilastr_to_berlin_nordbahnhof', 'next_on') }}
+      sudende:
+        friendly_name: S25/S26
+        value_template: >
+          {{ states('sensor.berlin_sudende_to_berlin_nordbahnhof') }},
+          {{ state_attr('sensor.berlin_sudende_to_berlin_nordbahnhof', 'next') }},
+          {{ state_attr('sensor.berlin_sudende_to_berlin_nordbahnhof', 'next_on') }}

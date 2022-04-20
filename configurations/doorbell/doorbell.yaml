@@ -64,3 +64,19 @@ script:
           message: "clear_notification"
           data:
             tag: "doorbell-triggered"
+  # SNCF to all sonos
+  notify_sncf_sonos:
+    alias: "Notify >> SNCF to all sonos"
+    sequence:
+      - service: sonos.snapshot
+        entity_id: all
+      - service: media_player.play_media
+        data:
+          entity_id:
+            - media_player.sonos_roam
+            - media_player.kuche
+            - media_player.wohnzimmer
+          media_content_id: media-source://media_source/local/sounds/sncf_new.wav
+          media_content_type: music
+      - service: sonos.snapshot
+        entity_id: all
