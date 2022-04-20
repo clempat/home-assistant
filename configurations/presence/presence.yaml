@@ -54,6 +54,15 @@ binary_sensor:
             or is_state('binary_sensor.x_motion_cellar_stairs', 'on')
           }}
 
+      motion_cellar:
+        friendly_name: "Cave"
+        device_class: motion
+        value_template: >
+          {{
+            is_state('binary_sensor.motion_stairs_cellar', 'on')
+            or is_state('binary_sensor.motion_cellar_wine', 'on')
+          }}
+
       motion_stairs_ground_floor:
         friendly_name: "Escalier RDC"
         device_class: motion
@@ -61,7 +70,7 @@ binary_sensor:
           {{ 
             is_state('binary_sensor.x_motion_stairs_ground_floor', 'on') 
             or is_state('binary_sensor.x_motion_stairs_ground_floor_up', 'on') 
-            or is_state('binary_sensor.x_motion_stairs_ground_floor_down', 'on') 
+            or is_state('binary_sensor.x_motion_stairs_groundfloor_down', 'on') 
           }}
 
       motion_stairs:

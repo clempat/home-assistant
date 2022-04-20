@@ -918,21 +918,21 @@ sensor:
     end: '{{ now() }}'
   - platform: history_stats
     name: Temps chauffage Chambre Cave Aujourd'hui
-    entity_id: switch.heating_bedroom_cellar
+    entity_id: switch.heating_office_clement
     state: 'on'
     type: time
     start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
     end: '{{ now() }}'
   - platform: history_stats
     name: Temps chauffage Chambre RDC Aujourd'hui
-    entity_id: switch.heating_bedroom_groundfloor
+    entity_id: switch.heating_office_melanie
     state: 'on'
     type: time
     start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
     end: '{{ now() }}'
   - platform: history_stats
     name: Temps chauffage Chambre 1er Aujourd'hui
-    entity_id: switch.heating_bedroom
+    entity_id: switch.heating_girls_bedroom
     state: 'on'
     type: time
     start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
@@ -988,7 +988,7 @@ sensor:
     end: '{{ now() }}'
   - platform: history_stats
     name: Temps chauffage Buanderie Aujourd'hui
-    entity_id: switch.heating_laundry
+    entity_id: switch.heating_laundryroom
     state: 'on'
     type: time
     start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
