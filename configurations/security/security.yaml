@@ -167,7 +167,8 @@ automation:
       state: "on"
     action:
     - service: notify.mobiles
-      title: 🚨 Securité Portes/Fenêtres ouvertes
-      message: |
-        Vous êtes en train de partir ? 
+      data:
+        title: 🚨 Securité Portes/Fenêtres ouvertes
+        message: |
+          Vous êtes en train de partir ? 
 
