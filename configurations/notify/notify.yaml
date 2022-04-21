@@ -63,7 +63,7 @@ script:
       - service: switch.turn_on
         data: {}
         target:
-          entity_id: switch.switchbotone_switch
+          entity_id: switch.switchlitra_switch
       - choose:
           - conditions:
               - condition: state
