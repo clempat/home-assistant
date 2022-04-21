@@ -1,0 +1,173 @@
+---
+# Security
+
+binary_sensor:
+  - platform: group
+    name: Windows
+    device_class: opening
+    entities:
+      - binary_sensor.x_window_bathroom_left
+      - binary_sensor.x_window_bathroom_right
+      - binary_sensor.x_window_bedroom_roof_left
+      - binary_sensor.x_window_bedroom_roof_right
+      - binary_sensor.x_window_cellar_smallroom_left
+      - binary_sensor.x_window_cellar_smallroom_right
+      - binary_sensor.x_window_florian_bedroom_left
+      - binary_sensor.x_window_florian_bedroom_right
+      - binary_sensor.x_window_girls_bedroom_door
+      - binary_sensor.x_window_kitchen_tap
+      - binary_sensor.x_window_livingroom_sofa
+      - binary_sensor.x_window_mina_clara_bedroom_left
+      - binary_sensor.x_window_mina_clara_bedroom_mid
+
+  - platform: group
+    name: Doors
+    device_class: opening
+    entities:
+      - binary_sensor.x_door_entrance_main
+      - binary_sensor.x_door_kitchen_terrace
+      - binary_sensor.x_door_livingroom_terrace
+
+template:
+  - binary_sensor:
+      - name: Open Livingroom
+        device_class: opening
+        unique_id: 7f8fa4d4-6e00-4ddb-af1e-a277339c0059
+        state: >-
+          {%- macro isOpen(room) %}
+            {%- set open_windows = expand(state_attr('binary_sensor.windows', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+            {%- set open_doors =  expand(state_attr('binary_sensor.doors', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+
+            {{ open_windows + open_doors > 0 }}
+          {%- endmacro -%}
+          {{- isOpen('Salon') -}}
+
+      - name: Open Kitchen
+        device_class: opening
+        unique_id: adfcdb5f-1f0c-47d4-aaaa-5fbf4f98f91e
+        state: >-
+          {%- macro isOpen(room) %}
+            {%- set open_windows = expand(state_attr('binary_sensor.windows', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+            {%- set open_doors =  expand(state_attr('binary_sensor.doors', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+
+            {{ open_windows + open_doors > 0 }}
+          {%- endmacro -%}
+          {{- isOpen('Cuisine') -}}
+
+      - name: Open Melanie's office
+        device_class: opening
+        unique_id: bc9392f5-ea2f-4b0a-9e4c-74cf45f7b03b
+        state: >-
+          {%- macro isOpen(room) %}
+            {%- set open_windows = expand(state_attr('binary_sensor.windows', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+            {%- set open_doors =  expand(state_attr('binary_sensor.doors', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+
+            {{ open_windows + open_doors > 0 }}
+          {%- endmacro -%}
+          {{- isOpen('Bureau Melanie') -}}
+
+      - name: Open Clément's Office
+        device_class: opening
+        unique_id: 1766b4b8-6664-422a-bc1b-3eb8b81af955
+        state: >-
+          {%- macro isOpen(room) %}
+            {%- set open_windows = expand(state_attr('binary_sensor.windows', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+            {%- set open_doors =  expand(state_attr('binary_sensor.doors', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+
+            {{ open_windows + open_doors > 0 }}
+          {%- endmacro -%}
+          {{- isOpen('Bureau Clément') -}}
+
+      - name: Open Bathroom
+        device_class: opening
+        unique_id: 0b73c0ce-293e-4b04-b08c-90670fb7ffa6
+        state: >-
+          {%- macro isOpen(room) %}
+            {%- set open_windows = expand(state_attr('binary_sensor.windows', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+            {%- set open_doors =  expand(state_attr('binary_sensor.doors', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+
+            {{ open_windows + open_doors > 0 }}
+          {%- endmacro -%}
+          {{- isOpen('Salle de bain') -}}
+
+      - name: Open Florian's Bedroom
+        device_class: opening
+        unique_id: 2d49741e-1b1c-4ff1-8ca2-0a67399012b1
+        state: >-
+          {%- macro isOpen(room) %}
+            {%- set open_windows = expand(state_attr('binary_sensor.windows', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+            {%- set open_doors =  expand(state_attr('binary_sensor.doors', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+
+            {{ open_windows + open_doors > 0 }}
+          {%- endmacro -%}
+          {{- isOpen('Chambre Florian') -}}
+
+      - name: Open girls' Bedroom
+        device_class: opening
+        unique_id: de3ae9c2-39d8-44f7-a296-b0b48e2300f7
+        state: >-
+          {%- macro isOpen(room) %}
+            {%- set open_windows = expand(state_attr('binary_sensor.windows', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+            {%- set open_doors =  expand(state_attr('binary_sensor.doors', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+
+            {{ open_windows + open_doors > 0 }}
+          {%- endmacro -%}
+          {{- isOpen('Chambre filles') -}}
+
+      - name: Open Roof Bedroom
+        device_class: opening
+        unique_id: 984abced-4bd4-4597-9eb1-2278a1766a98
+        state: >-
+          {%- macro isOpen(room) %}
+            {%- set open_windows = expand(state_attr('binary_sensor.windows', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+            {%- set open_doors =  expand(state_attr('binary_sensor.doors', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+
+            {{ open_windows + open_doors > 0 }}
+          {%- endmacro -%}
+          {{- isOpen('Chambre Toit') -}}
+
+      - name: Open Mezzanine
+        device_class: opening
+        unique_id: 8c2b3f3a-448b-402e-896b-86fcb53df8c5
+        state: >-
+          {%- macro isOpen(room) %}
+            {%- set open_windows = expand(state_attr('binary_sensor.windows', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+            {%- set open_doors =  expand(state_attr('binary_sensor.doors', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+
+            {{ open_windows + open_doors > 0 }}
+          {%- endmacro -%}
+          {{- isOpen('Mezannine') -}}
+
+      - name: Open Entrance
+        device_class: opening
+        unique_id: 1ebfcd0a-6d49-4691-9e7e-1b2d2dcdfc83
+        state: >-
+          {%- macro isOpen(room) %}
+            {%- set open_windows = expand(state_attr('binary_sensor.windows', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+            {%- set open_doors =  expand(state_attr('binary_sensor.doors', 'entity_id')) | selectattr('entity_id', 'in', area_entities(room)) | selectattr('state', 'eq', 'on') | list | count -%}
+
+            {{ open_windows + open_doors > 0 }}
+          {%- endmacro -%}
+          {{- isOpen('Entrée') -}}
+
+automation:
+  - id: notify_open_lock_door
+    alias: Security >> Notify Windows/Door open when lock getting locked
+    trigger:
+    - platform: state
+      entity_id: lock.entree
+      from: "unlocked"
+      to: "locked"
+    condition:
+    - alias: "Any windows/door open"
+      condition: "state"
+      entity_id: 
+      - binary_sensor.doors
+      - binary_sensor.windows
+      state: "on"
+    action:
+    - service: notify.mobiles
+      title: 🚨 Securité Portes/Fenêtres ouvertes
+      message: |
+        Vous êtes en train de partir ? 
+
