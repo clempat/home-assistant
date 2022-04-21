@@ -12,18 +12,18 @@ template:
       state_class: total
       state: >- 
         {%- set data = namespace(radiator_ids=[]) -%}
-        {%- for switch in states.switch -%}
-          {%- if switch.entity_id is match('switch.heating') and switch.state in ['unavailable', 'unknown'] -%}
-            {%- set data.radiator_ids = data.radiator_ids + [switch.entity_id] -%}
+        {%- for myswitch in states.switch -%}
+          {%- if myswitch.entity_id is match('switch.heating') and myswitch.state in ['unavailable', 'unknown'] -%}
+            {%- set data.radiator_ids = data.radiator_ids + [myswitch.entity_id] -%}
           {%- endif -%}
         {%- endfor -%}
         {{ data.radiator_ids | list | count }}
       attributes:
         entities: >- 
           {%- set data = namespace(radiator_ids=[]) -%}
-          {%- for switch in states.switch -%}
-            {%- if switch.entity_id is match('switch.heating') and switch.state in ['unavailable', 'unknown'] -%}
-              {%- set data.radiator_ids = data.radiator_ids + [switch.entity_id] -%}
+          {%- for myswitch in states.switch -%}
+            {%- if myswitch.entity_id is match('switch.heating') and myswitch.state in ['unavailable', 'unknown'] -%}
+              {%- set data.radiator_ids = data.radiator_ids + [myswitch.entity_id] -%}
             {%- endif -%}
           {%- endfor -%}
           {{ data.radiator_ids | list }}

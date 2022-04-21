@@ -23,6 +23,39 @@ input_boolean:
     name: live
     icon: mdi:record-rec
 
+scene:
+  - id: '1644270654653'
+    name: Clement Live
+    entities:
+      light.wled:
+        brightness: 128
+        rgb_color:
+        - 255
+        - 0
+        - 8
+        effect: Breathe
+        state: 'on'
+      light.yeelight_color_0x538becf:
+        rgb_color:
+        - 255
+        - 0
+        - 0
+        state: 'on'
+    icon: mdi:record
+
+  - id: '1644270753284'
+    name: Clement Not Live
+    entities:
+      light.wled:
+        rgb_color:
+        - 0
+        - 255
+        - 64
+        effect: Breathe
+        state: 'on'
+    icon: mdi:record-circle-outline
+
+
 script:
   run_live:
     alias: Run Live
