@@ -4,11 +4,13 @@ This is highly inspired from [GitOps Home Assistant from Budiman Jojo](https://b
 
 For the content, it is about automating with Home Assistant the following components:
 
-- Lights
-- Covers
-- Heating
-- Vacuum
-- Security
-- Musics
-- Voice Assistants
+- [Lights](./configurations/lights)
+- [Covers](./configurations/covers)
+- [Heating](./configurations/heating)
+- [Security](./configurations/security)
+- [Camera](./configurations/camera)
+- [Cleaning](./configurations/cleaning)
+- [Notify](./configurations/notify)
+- [Transportation](./configurations/transportation)
+- Music
 - ...
