@@ -173,7 +173,7 @@ automation:
         - service: light.toggle
           data: {}
           entity_id: light.hue_melanie_office_sofa
-          
+  
   - id: d8f3dd82-0192-400c-bb57-236c00ce6e12
     alias: Lights >> Activate live scene round button
 
@@ -185,5 +185,28 @@ automation:
         event: 1002
 
     action:
-      - service: script.run_live
+      - service: input_boolean.toggle
+        entity_id: input_boolean.live
     mode: single
+
+  - id: toggle_live_scene
+    alias: Lights >> Toggle live scene
+      
+    trigger: 
+      platform: state
+      entity_id: input_boolean.live
+ 
+    action:
+      - choose:
+         - alias: "If turning ON"
+           conditions: "{{ trigger.to_state.state == 'on' }}" 
+           sequence:
+             - service: scene.turn_on
+               entity_id: scene.clement_live
+             - service: switch.turn_on
+               entity_id: switch.switchbotone_switch
+        default:
+          - service: scene.turn_on
+            entity_id: scene.clement_not_live
+          - service: switch.turn_on
+            entity_id: switch.switchbotone_switch
