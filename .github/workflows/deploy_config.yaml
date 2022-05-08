@@ -24,6 +24,8 @@ jobs:
           docker pull -q "${{ steps.fetch_version.outputs.ha_image }}"
 
           find . -type f -name "*.yaml" -print0 | xargs -0 sed -i 's/\!env_var .*$/xxxxxxxxx/g'
+          # Delete browser_mod bloc
+          sed -i '/browser_mod:/,/^$/d' configuration.yaml
           echo [] > automations.yaml
           echo [] > scripts.yaml
           echo [] > scenes.yaml

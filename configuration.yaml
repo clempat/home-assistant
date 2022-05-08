@@ -13,6 +13,9 @@ homeassistant:
 frontend:
   themes: !include_dir_merge_named themes
 
+browser_mod:
+  prefix: "browser_"
+
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
