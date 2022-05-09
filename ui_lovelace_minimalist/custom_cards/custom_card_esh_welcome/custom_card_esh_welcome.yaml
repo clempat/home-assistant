@@ -112,6 +112,8 @@ card_esh_welcome:
         type: "custom:button-card"
         show_icon: false
         show_label: false
+        variables:
+          ulm_card_welcome_user: "[[[ return variables.ulm_card_welcome_user ]]]"
         show_name: true
         show_entity_picture: false
         name: |
@@ -128,7 +130,13 @@ card_esh_welcome:
             } else {
               welcome = variables.ulm_hello;
             }
-            return welcome + ', ' + '   <br>' + user.name + '!';
+
+            if (variables.ulm_card_welcome_user){
+              return welcome + ', ' + '   <br>' + user.name + '!';
+            } else {
+              return welcome; 
+            }
+            
           ]]]
         styles:
           name:

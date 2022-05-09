@@ -1,13 +1,12 @@
 ---
 title: Maison
-path: home
+path: home-tablet
 cards:
   - type: "custom:button-card"
     template: "card_esh_welcome"
     triggers_update: "input_boolean.welcome_toggle"
     variables:
       ulm_card_esh_welcome_collapse: input_boolean.welcome_toggle
-      ulm_card_welcome_user: true
       ulm_weather: "weather.maison"
       entity_1:
         nav: "house"
@@ -51,7 +50,6 @@ cards:
           ulm_card_person_zone2: zone.ecole
           ulm_card_person_use_entity_picture: true
 
-  - type: 'custom:button-card'
-    template: card_title
-    name: Pièces 
+  - type: 'weather-forcast'
+    entity: weather.maison
 
