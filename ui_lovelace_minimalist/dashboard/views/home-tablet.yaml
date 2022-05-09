@@ -160,7 +160,7 @@ cards:
             - yellow_on
           name: Salon
           entity: light.livingroom
-          icon: mdi:fridge
+          icon: mdi:sofa
           tap_action:
             action: navigate
             navigation_path: 'livingroom'
