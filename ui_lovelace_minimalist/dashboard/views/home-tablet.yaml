@@ -100,23 +100,23 @@ cards:
         icon: "mdi:television"
         icon_color: "orange"
         name: "Regarder TV"
-        bg_color: "green"
+        bg_color: "orange"
       entity_3:
         entity_id: "scene.light_livingroom_reading"
         icon: "mdi:book-open-page-variant"
         icon_color: "blue"
         name: "Lecture"
-        bg_color: "yellow"
+        bg_color: "blue"
       entity_4:
         entity_id: "scene.light_good_night"
         icon: "mdi:lightbulb-night"
-        icon_color: "blue"
+        icon_color: "purple"
         name: "Bonne Nuit"
-        bg_color: "blue"
+        bg_color: "purple"
       entity_5:
         entity_id: "scene.light_away"
         icon: "mdi:account-cancel"
-        icon_color: "blue"
+        icon_color: "red"
         name: "Départ"
         bg_color: "red"
           
