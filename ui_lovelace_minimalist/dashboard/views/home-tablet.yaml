@@ -9,10 +9,10 @@ cards:
       ulm_card_esh_welcome_collapse: input_boolean.welcome_toggle
       ulm_weather: "weather.maison"
       entity_1:
-        nav: "house"
-        icon: "mdi:home"
-        name: "House"
-        color: "blue"
+        nav: "heating"
+        icon: "mdi:radiator"
+        name: "Chauffage"
+        color: "red"
       entity_2:
         nav: "lights"
         icon: "mdi:lightbulb"
@@ -32,7 +32,7 @@ cards:
         nav: "network"
         icon: "mdi:flask"
         name: Lab
-        color: "red"
+        color: "blue"
   - type: horizontal-stack
     cards:
       - type: "custom:button-card"
@@ -84,5 +84,6 @@ cards:
     template: "card_vacuum"
     entity: "vacuum.vacuum_kitchen"
     variables:
+      ulm_card_vacuum_name: "Aspirateur Cuisine"
       ulm_card_vacuum_room: "script.vacuum_kitchen"
       ulm_card_vacuum_room_icon: "mdi:table-chair"
