@@ -105,7 +105,7 @@ cards:
             entity_id: "scene.light_livingroom_tv"
             icon: "mdi:television"
             icon_color: "blue"
-            name: "Regarder TV"
+            name: "TV"
             bg_color: "blue"
           entity_3:
             entity_id: "scene.light_livingroom_reading"
@@ -117,7 +117,7 @@ cards:
             entity_id: "scene.light_good_night"
             icon: "mdi:weather-night"
             icon_color: "purple"
-            name: "Bonne Nuit"
+            name: "Nuit"
             bg_color: "purple"
           entity_5:
             entity_id: "scene.light_away"
