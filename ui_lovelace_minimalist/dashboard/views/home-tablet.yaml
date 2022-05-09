@@ -79,3 +79,10 @@ cards:
         icon_color: "purple"
         name: "Nuit"
         bg_color: "purple"
+  
+  - type: "custom:button-card"
+    template: "card_vacuum"
+    entity: "vacuum.vacuum_kitchen"
+    variables:
+      ulm_card_vacuum_room: "script.vacuum_kitchen"
+      ulm_card_vacuum_room_icon: "mdi:table-chair"

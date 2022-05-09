@@ -94,3 +94,24 @@ automation:
         content: 🧺 Sortir le linge de la machine à laver
         due_date_string: Aujourd'hui
         due_date_lang: fr
+
+# Vacuum
+# All about vacumms
+
+script:
+  vacuum_under_table:
+    alias: Aspirer sous la table
+    sequence:
+      - service: xiaomi_miio.vacuum_clean_zone
+        data:
+          entity_id: vacuum.vacuum_kitchen
+          zone: [[24510, 25189, 26660, 26939]]
+          repeats: 3
+  vacuum_kitchen:
+    alias: Aspirer la cuisine (zone)
+    sequence:
+      - service: xiaomi_miio.vacuum_clean_zone
+        data:
+          entity_id: vacuum.vacuum_kitchen
+          zone: [[24469, 25014, 30169, 27714]]
+          repeats: 3
