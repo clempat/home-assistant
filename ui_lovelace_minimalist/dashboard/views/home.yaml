@@ -33,3 +33,24 @@ cards:
         icon: "mdi:flask"
         name: Lab
         color: "red"
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_person
+        variables:
+          ulm_card_person_entity: person.clement_patout
+          ulm_card_person_zone1: zone.enpal
+          ulm_card_person_zone2: zone.kita
+          ulm_card_person_use_entity_picture: true
+      - type: "custom:button-card"
+        template: card_person
+        variables:
+          ulm_card_person_entity: person.melanie_patout
+          ulm_card_person_zone1: zone.kcw
+          ulm_card_person_zone2: zone.ecole
+          ulm_card_person_use_entity_picture: true
+
+  - type: 'custom:button-card'
+    template: card_title
+    name: Pièces 
+
