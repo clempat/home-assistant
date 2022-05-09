@@ -52,73 +52,77 @@ cards:
   - type: weather-forecast
     entity: weather.maison
 
-  - type: 'custom:button-card'
-    template: card_title
-    name: Volets 
-    label: "Scènes"
+  - type: vertical-stack
+    cards:
+      - type: 'custom:button-card'
+        template: card_title
+        name: Volets 
+        label: "Scènes"
 
-  - type: "custom:button-card"
-    template:
-      - card_scenes
-    variables:
-      entity_1:
-        entity_id: "scene.covers_all_open"
-        icon: "mdi:weather-sunny"
-        icon_color: "yellow"
-        name: "Jour"
-        bg_color: "yellow"
-      entity_2:
-        entity_id: "scene.covers_night_upstairs"
-        icon: "mdi:weather-sunset-down"
-        icon_color: "blue"
-        name: "Soir"
-        bg_color: "blue"
-      entity_3:
-        entity_id: "scene.covers_night"
-        icon: "mdi:weather-night"
-        icon_color: "purple"
-        name: "Nuit"
-        bg_color: "purple"
+      - type: "custom:button-card"
+        template:
+          - card_scenes
+        variables:
+          entity_1:
+            entity_id: "scene.covers_all_open"
+            icon: "mdi:weather-sunny"
+            icon_color: "yellow"
+            name: "Jour"
+            bg_color: "yellow"
+          entity_2:
+            entity_id: "scene.covers_night_upstairs"
+            icon: "mdi:weather-sunset-down"
+            icon_color: "blue"
+            name: "Soir"
+            bg_color: "blue"
+          entity_3:
+            entity_id: "scene.covers_night"
+            icon: "mdi:weather-night"
+            icon_color: "purple"
+            name: "Nuit"
+            bg_color: "purple"
   
-  - type: 'custom:button-card'
-    template: card_title
-    name: Lumières 
-    label: "Scènes"
+  - type: vertical-stack
+    cards:
+      - type: 'custom:button-card'
+        template: card_title
+        name: Lumières 
+        label: "Scènes"
 
-  - type: "custom:button-card"
-    template:
-      - card_scenes
-    variables:
-      entity_1:
-        entity_id: "scene.light_diner"
-        icon: "mdi:silverware-fork-knife"
-        icon_color: "purple"
-        name: "Diner"
-        bg_color: "purple"
-      entity_2:
-        entity_id: "scene.light_livingroom_tv"
-        icon: "mdi:television"
-        icon_color: "orange"
-        name: "Regarder TV"
-        bg_color: "orange"
-      entity_3:
-        entity_id: "scene.light_livingroom_reading"
-        icon: "mdi:book-open-page-variant"
-        icon_color: "blue"
-        name: "Lecture"
-        bg_color: "blue"
-      entity_4:
-        entity_id: "scene.light_good_night"
-        icon: "mdi:lightbulb-night"
-        icon_color: "purple"
-        name: "Bonne Nuit"
-        bg_color: "purple"
-      entity_5:
-        entity_id: "scene.light_away"
-        icon: "mdi:account-cancel"
-        icon_color: "red"
-        name: "Départ"
-        bg_color: "red"
+      - type: "custom:button-card"
+        template:
+          - card_scenes
+        variables:
+          entity_1:
+            entity_id: "scene.light_diner"
+            icon: "mdi:silverware-fork-knife"
+            icon_color: "purple"
+            name: "Diner"
+            bg_color: "purple"
+          entity_2:
+            entity_id: "scene.light_livingroom_tv"
+            icon: "mdi:television"
+            icon_color: "orange"
+            name: "Regarder TV"
+            bg_color: "orange"
+          entity_3:
+            entity_id: "scene.light_livingroom_reading"
+            icon: "mdi:book-open-page-variant"
+            icon_color: "blue"
+            name: "Lecture"
+            bg_color: "blue"
+          entity_4:
+            entity_id: "scene.light_good_night"
+            icon: "mdi:lightbulb-night"
+            icon_color: "purple"
+            name: "Bonne Nuit"
+            bg_color: "purple"
+          entity_5:
+            entity_id: "scene.light_away"
+            icon: "mdi:account-cancel"
+            icon_color: "red"
+            name: "Départ"
+            bg_color: "red"
           
   - type: "custom:button-card"
     template: "card_vacuum"
