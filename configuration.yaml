@@ -22,7 +22,7 @@ lovelace:
     lovelace-tablet:
       mode: yaml
       title: iPad
-      icond: mdi:tablet
+      icon: mdi:tablet
       show_in_sidebar: true
       filename: ui_lovelace_minimalist/dashboard/tablet.yaml
 
