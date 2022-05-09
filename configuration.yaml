@@ -19,7 +19,7 @@ browser_mod:
 lovelace:
   mode: storage
   dashboards:
-    tablet:
+    lovelace-tablet:
       mode: yaml
       title: iPad
       icond: mdi:tablet
