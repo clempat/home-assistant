@@ -1,6 +1,6 @@
 ---
 title: Maison
-path: home-tablet
+path: home
 cards:
   - type: "custom:button-card"
     template: "card_esh_welcome"
@@ -49,7 +49,33 @@ cards:
           ulm_card_person_zone1: zone.kcw
           ulm_card_person_zone2: zone.ecole
           ulm_card_person_use_entity_picture: true
-
-  - type: 'weather-forcast'
+  - type: weather-forecast
     entity: weather.maison
 
+  - type: 'custom:button-card'
+    template: card_title
+    name: Volets 
+    label: "Scènes"
+
+  - type: "custom:button-card"
+    template:
+      - card_scenes
+    variables:
+      entity_1:
+        entity_id: "scene.covers_all_open"
+        icon: "mdi:weather-sunny"
+        icon_color: "yellow"
+        name: "Jour"
+        bg_color: "yellow"
+      entity_2:
+        entity_id: "scene.covers_night_upstairs"
+        icon: "mdi:weather-sunset-down"
+        icon_color: "blue"
+        name: "Soir"
+        bg_color: "blue"
+      entity_3:
+        entity_id: "scene.covers_night"
+        icon: "mdi:weather-night"
+        icon_color: "purple"
+        name: "Nuit"
+        bg_color: "purple"

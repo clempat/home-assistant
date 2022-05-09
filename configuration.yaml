@@ -16,6 +16,16 @@ frontend:
 browser_mod:
   prefix: "browser_"
 
+lovelace:
+  mode: storage
+  dashboards:
+    tablet:
+      mode: yaml
+      title: iPad
+      icond: mdi:tablet
+      show_in_sidebar: true
+      filename: ui_lovelace_minimalist/dashboard/tablet.yaml
+
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
