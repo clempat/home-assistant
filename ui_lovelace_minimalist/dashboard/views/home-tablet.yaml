@@ -2,55 +2,57 @@
 title: Maison
 path: home
 cards:
-  - type: "custom:button-card"
-    template: "card_esh_welcome"
-    triggers_update: "input_boolean.welcome_toggle"
-    variables:
-      ulm_card_esh_welcome_collapse: input_boolean.welcome_toggle
-      ulm_weather: "weather.maison"
-      entity_1:
-        nav: "heating"
-        icon: "mdi:radiator"
-        name: "Chauffage"
-        color: "red"
-      entity_2:
-        nav: "lights"
-        icon: "mdi:lightbulb"
-        name: "Lights"
-        color: "yellow"
-      entity_3:
-        nav: "security"
-        icon: "mdi:shield"
-        name: Secure
-        color: "green"
-      entity_4:
-        nav: "network"
-        icon: "mdi:nas"
-        name: Lab
-        color: "purple"
-      entity_5:
-        nav: "network"
-        icon: "mdi:flask"
-        name: Lab
-        color: "blue"
-  - type: horizontal-stack
+  - type: vertical-stack
     cards:
       - type: "custom:button-card"
-        template: card_person
+        template: "card_esh_welcome"
+        triggers_update: "input_boolean.welcome_toggle"
         variables:
-          ulm_card_person_entity: person.clement_patout
-          ulm_card_person_zone1: zone.enpal
-          ulm_card_person_zone2: zone.kita
-          ulm_card_person_use_entity_picture: true
-      - type: "custom:button-card"
-        template: card_person
-        variables:
-          ulm_card_person_entity: person.melanie_patout
-          ulm_card_person_zone1: zone.kcw
-          ulm_card_person_zone2: zone.ecole
-          ulm_card_person_use_entity_picture: true
-  - type: weather-forecast
-    entity: weather.maison
+          ulm_card_esh_welcome_collapse: input_boolean.welcome_toggle
+          ulm_weather: "weather.maison"
+          entity_1:
+            nav: "heating"
+            icon: "mdi:radiator"
+            name: "Chauffage"
+            color: "red"
+          entity_2:
+            nav: "lights"
+            icon: "mdi:lightbulb"
+            name: "Lights"
+            color: "yellow"
+          entity_3:
+            nav: "security"
+            icon: "mdi:shield"
+            name: Secure
+            color: "green"
+          entity_4:
+            nav: "network"
+            icon: "mdi:nas"
+            name: Lab
+            color: "purple"
+          entity_5:
+            nav: "network"
+            icon: "mdi:flask"
+            name: Lab
+            color: "blue"
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: card_person
+            variables:
+              ulm_card_person_entity: person.clement_patout
+              ulm_card_person_zone1: zone.enpal
+              ulm_card_person_zone2: zone.kita
+              ulm_card_person_use_entity_picture: true
+          - type: "custom:button-card"
+            template: card_person
+            variables:
+              ulm_card_person_entity: person.melanie_patout
+              ulm_card_person_zone1: zone.kcw
+              ulm_card_person_zone2: zone.ecole
+              ulm_card_person_use_entity_picture: true
+      - type: weather-forecast
+        entity: weather.maison
 
   - type: vertical-stack
     cards:
@@ -132,32 +134,34 @@ cards:
       ulm_card_vacuum_room: "script.vacuum_kitchen"
       ulm_card_vacuum_room_icon: "mdi:table-chair"
 
-  - type: 'custom:button-card'
-    template: card_title
-    name: Pièces
-
-  - type: 'horizontal-stack'
+  - type: vertical-stack
     cards:
-      - type: 'custom:button-card'
-        template:
-          - card_esh_room
-          - yellow_on
-        name: Cuisine
-        entity: light.kitchen
-        icon: mdi:fridge
-        tap_action:
-          action: navigate
-          navigation_path: 'kitchen'
-        label: '[[[ return states["sensor.temperature_cuisine"].state + "°C" ]]]'
-          
-      - type: 'custom:button-card'
-        template:
-          - card_esh_room
-          - yellow_on
-        name: Salon
-        entity: light.livingroom
-        icon: mdi:fridge
-        tap_action:
-          action: navigate
-          navigation_path: 'livingroom'
-        label: '[[[ return states["sensor.temperature_salon"].state + "°C" ]]]'
+    - type: 'custom:button-card'
+      template: card_title
+      name: Pièces
+
+    - type: 'horizontal-stack'
+      cards:
+        - type: 'custom:button-card'
+          template:
+            - card_esh_room
+            - yellow_on
+          name: Cuisine
+          entity: light.kitchen
+          icon: mdi:fridge
+          tap_action:
+            action: navigate
+            navigation_path: 'kitchen'
+          label: '[[[ return states["sensor.temperature_cuisine"].state + "°C" ]]]'
+            
+        - type: 'custom:button-card'
+          template:
+            - card_esh_room
+            - yellow_on
+          name: Salon
+          entity: light.livingroom
+          icon: mdi:fridge
+          tap_action:
+            action: navigate
+            navigation_path: 'livingroom'
+          label: '[[[ return states["sensor.temperature_salon"].state + "°C" ]]]'
