@@ -96,15 +96,15 @@ cards:
           entity_1:
             entity_id: "scene.light_diner"
             icon: "mdi:silverware-fork-knife"
-            icon_color: "purple"
+            icon_color: "yellow"
             name: "Diner"
-            bg_color: "purple"
+            bg_color: "yellow"
           entity_2:
             entity_id: "scene.light_livingroom_tv"
             icon: "mdi:television"
-            icon_color: "orange"
+            icon_color: "blue"
             name: "Regarder TV"
-            bg_color: "orange"
+            bg_color: "blue"
           entity_3:
             entity_id: "scene.light_livingroom_reading"
             icon: "mdi:book-open-page-variant"
@@ -113,7 +113,7 @@ cards:
             bg_color: "blue"
           entity_4:
             entity_id: "scene.light_good_night"
-            icon: "mdi:lightbulb-night"
+            icon: "mdi:weather-night"
             icon_color: "purple"
             name: "Bonne Nuit"
             bg_color: "purple"
