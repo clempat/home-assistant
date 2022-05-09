@@ -80,6 +80,46 @@ cards:
         name: "Nuit"
         bg_color: "purple"
   
+  - type: 'custom:button-card'
+    template: card_title
+    name: Lumières 
+    label: "Scènes"
+
+  - type: "custom:button-card"
+    template:
+      - card_scenes
+    variables:
+      entity_1:
+        entity_id: "scene.light_diner"
+        icon: "mdi:silverware-fork-knife"
+        icon_color: "purple"
+        name: "Diner"
+        bg_color: "purple"
+      entity_2:
+        entity_id: "scene.light_livingroom_tv"
+        icon: "mdi:television"
+        icon_color: "orange"
+        name: "Regarder TV"
+        bg_color: "green"
+      entity_3:
+        entity_id: "scene.light_livingroom_reading"
+        icon: "mdi:book-open-page-variant"
+        icon_color: "blue"
+        name: "Lecture"
+        bg_color: "yellow"
+      entity_4:
+        entity_id: "scene.light_good_night"
+        icon: "mdi:lightbulb-night"
+        icon_color: "blue"
+        name: "Bonne Nuit"
+        bg_color: "blue"
+      entity_5:
+        entity_id: "scene.light_away"
+        icon: "mdi:account-cancel"
+        icon_color: "blue"
+        name: "Départ"
+        bg_color: "red"
+          
   - type: "custom:button-card"
     template: "card_vacuum"
     entity: "vacuum.vacuum_kitchen"
@@ -87,3 +127,33 @@ cards:
       ulm_card_vacuum_name: "Aspirateur Cuisine"
       ulm_card_vacuum_room: "script.vacuum_kitchen"
       ulm_card_vacuum_room_icon: "mdi:table-chair"
+
+  - type: 'custom:button-card'
+    template: card_title
+    name: Pièces
+
+  - type: 'horizontal-stack'
+    cards:
+      - type: 'custom:button-card'
+        template:
+          - card_esh_room
+          - yellow_on
+        name: Cuisine
+        entity: light.kitchen
+        icon: mdi:fridge
+        tap_action:
+          action: navigate
+          navigation_path: 'kitchen'
+        label: '[[[ return states["sensor.temperature_cuisine"].state + "°C" ]]]'
+          
+      - type: 'custom:button-card'
+        template:
+          - card_esh_room
+          - yellow_on
+        name: Salon
+        entity: light.livingroom
+        icon: mdi:fridge
+        tap_action:
+          action: navigate
+          navigation_path: 'livingroom'
+        label: '[[[ return states["sensor.temperature_salon"].state + "°C" ]]]'
