@@ -32,7 +32,7 @@ template:
       state_class: total
       state: >-
         {%- set data = namespace(entities=[]) -%}
-        {%- set temperature_entities =  states.sensor | selectattr('attributes.device_class', 'eq', 'temperature') | selectattr('state', 'in', ['unavailable', 'unknown']) -%}
+        {%- set temperature_entities =  states.sensor | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | selectattr('state', 'in', ['unavailable', 'unknown']) -%}
         {%- for entity in temperature_entities -%}
         {%- set device_id = device_id(entity.entity_id) -%}
           {%- if device_attr(device_id, 'model') is search('weather') %}
@@ -43,7 +43,7 @@ template:
       attributes:
         entities: >- 
           {%- set data = namespace(entities=[]) -%}
-          {%- set temperature_entities =  states.sensor | selectattr('attributes.device_class', 'eq', 'temperature') | selectattr('state', 'in', ['unavailable', 'unknown']) -%}
+          {%- set temperature_entities =  states.sensor | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | selectattr('state', 'in', ['unavailable', 'unknown']) -%}
           {%- for entity in temperature_entities -%}
           {%- set device_id = device_id(entity.entity_id) -%}
             {%- if device_attr(device_id, 'model') is search('weather') %}
@@ -57,7 +57,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -73,7 +73,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -89,7 +89,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -105,7 +105,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -121,7 +121,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -137,7 +137,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -153,7 +153,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -169,7 +169,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -185,7 +185,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -201,7 +201,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -217,7 +217,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -233,7 +233,7 @@ template:
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
-            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- set temperature_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'temperature') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
             {%- for entity in temperature_entities -%}
             {%- set device_id = device_id(entity.entity_id) -%}
               {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
@@ -243,6 +243,200 @@ template:
             {{ data.temperatures | map('float') | average | round(1) }}
         {%- endmacro -%}
         {{ getRoomTemperature("Entrée") }}
+
+# Humidity
+    - name: Humidité Salon
+      unique_id: CC62254F-3173-457A-B6AA-B7BFD5CB549F
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Salon") }}
+    - name: Humidité Cuisine
+      unique_id: 1E610545-D936-4899-A441-1D2698001226
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Cuisine") }}
+    - name: Humidité Bureau Melanie
+      unique_id: 79F8C67F-E4E7-44B2-8375-3DE5C829F43C
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Bureau Melanie") }}
+    - name: Humidité Escalier
+      unique_id: 3BAB8BDA-69D3-4EDD-A443-848C237E8209
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Escalier") }}
+    - name: Humidité Bureau Clément
+      unit_of_measurement: "%"
+      unique_id: 6432C713-EA65-4C32-A45B-805AFA641CD3
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Bureau Clément") }}
+    - name: Humidité Chambre filles
+      unique_id: A99897A2-B0D7-4E7F-876F-D7425FA98D43
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Chambre filles") }}
+    - name: Humidité Chambre Florian
+      unique_id: 37C83B33-0BFE-483D-9F0A-ED5A52479D50
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Chambre Florian") }}
+    - name: Humidité Chambre Toit
+      unique_id: 328DEBEC-2E10-4579-9F2F-0AA4FA0D90BF
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Chambre Toit") }}
+    - name: Humidité Mezzanine
+      unique_id: 7E474A51-AB5F-46E6-BDBA-65BDACF20A50
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Mezzanine") }}
+    - name: Humidité Laverie
+      unique_id: A8EDD59F-7CC5-4F18-8B22-765817BB7183
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Laverie") }}
+    - name: Humidité Salle de bain
+      unique_id: A35DD3B5-ABB4-4172-ACC4-155B7F109EB6
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Salle de bain") }}
+    - name: Humidité Entrée
+      unique_id: F08FD5FB-EBFA-4E12-AFF1-46D18237B240
+      unit_of_measurement: "%"
+      state: >- 
+        {%- macro getRoomHumidity(room) -%}
+            {%- set data = namespace(humidities=[]) -%}
+            {%- set humidity_entities =  expand(area_entities(room)) | selectattr('attributes.device_class', 'defined') | selectattr('attributes.device_class', 'eq', 'humidity') | rejectattr('state', 'in', ['unavailable', 'unknown']) -%}
+            {%- for entity in humidity_entities -%}
+            {%- set device_id = device_id(entity.entity_id) -%}
+              {%- if device_attr(device_id, 'model') is search('weather', ignorecase=True) or device_attr(device_id, 'model') is search('sensor.ht', ignorecase=True) %}
+                  {%- set data.humidities = data.humidities + [entity.state] -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ data.humidities | map('float') | average | round(1) }}
+        {%- endmacro -%}
+        {{ getRoomHumidity("Entrée") }}
 
 # Group of heating
 
