@@ -35,7 +35,7 @@ cards:
               ulm_card_graph_hours: 24
           
       - type: horizontal-stack
-        card:
+        cards:
           - type: "custom:button-card"
             template: card_input_number
             entity: input_number.heating_kitchen_mode_eco
