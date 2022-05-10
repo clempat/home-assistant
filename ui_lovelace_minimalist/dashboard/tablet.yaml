@@ -7,4 +7,5 @@ background: "var(--background-image)"
 views:
   - !include views/home-tablet.yaml
   - !include views/kitchen.yaml
+  - !include views/livingroom.yaml
     
