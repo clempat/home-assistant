@@ -7,28 +7,43 @@ cards:
     variables:
       ulm_chip_back_path: home
         
-  - type: 'custom:button-card'
-    template: card_title
-    name: Cuisine
- 
-  - type: horizontal-stack
+  - type: vertical-stack
     cards:
-      
       - type: 'custom:button-card'
-        template: card_graph
-        variables:
-          ulm_card_graph_color: "var(--google-blue)"
-          ulm_card_graph_name: Temperature Cuisine
-          ulm_card_graph_entity: sensor.temperature_cuisine
-          ulm_card_graph_type: fill
-          ulm_card_graph_hours: 24
+        template: card_title
+        name: Cuisine
+     
+      - type: horizontal-stack
+        cards:
+          
+          - type: 'custom:button-card'
+            template: card_graph
+            variables:
+              ulm_card_graph_color: "var(--google-blue)"
+              ulm_card_graph_name: Temperature Cuisine
+              ulm_card_graph_entity: sensor.temperature_cuisine
+              ulm_card_graph_type: fill
+              ulm_card_graph_hours: 24
 
-      - type: 'custom:button-card'
-        template: card_graph
-        variables:
-          ulm_card_graph_color: "var(--google-red)"
-          ulm_card_graph_name: Humidité Cuisine
-          ulm_card_graph_entity: sensor.humidite_cuisine
-          ulm_card_graph_type: fill
-          ulm_card_graph_hours: 24
+          - type: 'custom:button-card'
+            template: card_graph
+            variables:
+              ulm_card_graph_color: "var(--google-red)"
+              ulm_card_graph_name: Humidité Cuisine
+              ulm_card_graph_entity: sensor.humidite_cuisine
+              ulm_card_graph_type: fill
+              ulm_card_graph_hours: 24
+          
+      - type: horizontal-stack
+        card:
+          - type: "custom:button-card"
+            template: card_input_number
+            entity: input_number.heating_kitchen_mode_eco
+            variables:
+              ulm_card_input_number_name: "ECO"
+          - type: "custom:button-card"
+            template: card_input_number
+            entity: input_number.heating_kitchen_mode_confort
+            variables:
+              ulm_card_input_number_name: "Confort"
 
