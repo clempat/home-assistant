@@ -52,3 +52,40 @@ cards:
         entity: climate.cuisine
         variables:
           ulm_card_thermostat_name: Thermostat
+
+  - type: vertical-stack
+    cards:
+      - type: 'custom:button-card'
+        template: card_title
+        name: Lights
+
+      - type: grid
+        columns: 2
+        cards:
+          - type: "custom:button-card"
+            template: card_light
+            entity: light.kitchen
+            variables:
+              ulm_card_light_enable_popup: true
+              ulm_card_light_name: Cuisine
+
+          - type: "custom:button-card"
+            template: card_light
+            entity: light.kitchen_table
+            variables:
+              ulm_card_light_enable_popup: true
+              ulm_card_light_name: Table
+
+          - type: "custom:button-card"
+            template: card_light
+            entity: light.kitchen_ceiling
+            variables:
+              ulm_card_light_enable_popup: true
+              ulm_card_light_name: Couloir
+
+          - type: "custom:button-card"
+            template: card_light
+            entity: light.plan_kitchen
+            variables:
+              ulm_card_light_enable_popup: true
+              ulm_card_light_name: Plan
