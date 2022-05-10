@@ -47,3 +47,8 @@ cards:
             variables:
               ulm_card_input_number_name: "Confort"
 
+      - type: "custom:button-card"
+        template: card_thermostat
+        entity: climate.hvac
+        variables:
+          ulm_card_thermostat_name: Thermostat
