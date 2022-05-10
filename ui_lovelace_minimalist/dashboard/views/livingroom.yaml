@@ -113,7 +113,7 @@ cards:
 
       - type: "custom:button-card"
         template: card_media_player
-        entity: media_player.media_player.wohnzimmer
+        entity: media_player.wohnzimmer
         name: Sonos Salon
         variables:
           ulm_card_media_player_enable_art: true
