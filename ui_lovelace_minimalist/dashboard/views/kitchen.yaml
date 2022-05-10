@@ -65,28 +65,30 @@ cards:
         cards:
           - type: "custom:button-card"
             template: card_light
-            entity: light.kitchen
+            entity: light.kitchen_ceiling
             variables:
-              ulm_card_light_enable_popup: true
               ulm_card_light_name: Cuisine
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_collapse: true
 
           - type: "custom:button-card"
             template: card_light
             entity: light.kitchen_table
             variables:
-              ulm_card_light_enable_popup: true
               ulm_card_light_name: Table
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_collapse: true
 
           - type: "custom:button-card"
             template: card_light
-            entity: light.kitchen_ceiling
+            entity: light.yeelight_ceiling_kitchen
             variables:
-              ulm_card_light_enable_popup: true
               ulm_card_light_name: Couloir
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_collapse: true
 
           - type: "custom:button-card"
             template: card_light
             entity: light.plan_kitchen
             variables:
-              ulm_card_light_enable_popup: true
               ulm_card_light_name: Plan
