@@ -53,6 +53,7 @@ scene:
         - 64
         effect: Breathe
         state: 'on'
+      light.yeelight_color_0x538becf: off
     icon: mdi:record-circle-outline
 
 

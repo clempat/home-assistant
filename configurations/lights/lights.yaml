@@ -204,9 +204,9 @@ automation:
              - service: scene.turn_on
                entity_id: scene.clement_live
              - service: switch.turn_on
-               entity_id: switch.switchbotone_switch
+               entity_id: switch.switchbotlitra_switch
         default:
           - service: scene.turn_on
             entity_id: scene.clement_not_live
           - service: switch.turn_on
-            entity_id: switch.switchbotone_switch
+            entity_id: switch.switchbotlitra_switch

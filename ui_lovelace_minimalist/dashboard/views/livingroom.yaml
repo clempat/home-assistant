@@ -104,12 +104,10 @@ cards:
         name: Livingroom Nvidia Shield
         variables:
           ulm_card_media_player_enable_art: true
-          ulm_card_media_player_enable_controls: true
           ulm_card_media_player_collapsible: true
           ulm_card_media_player_player_controls_entity: remote.harmony_salon
           ulm_card_media_player_more_info: true
           ulm_card_media_player_enable_volume_slider: true
-          ulm_card_media_player_enable_popup: true
 
 
       - type: "custom:button-card"

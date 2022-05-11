@@ -18,3 +18,4 @@ All opening but quite close to [presence](../presence/README.md) due to the moti
 - [ ] Alert when motion and no one at home
 - [ ] Alert when motion ground floor when no guest and everyone is sleeping (Test to do)
 - [ ] Alert when windows/door open and leaving the house
+- [ ] Notify if Nuki open for person not detected at home
