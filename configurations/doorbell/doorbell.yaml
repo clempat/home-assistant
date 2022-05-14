@@ -78,5 +78,7 @@ script:
             - media_player.wohnzimmer
           media_content_id: media-source://media_source/local/sounds/sncf_new.wav
           media_content_type: music
+      - delay:
+          seconds: 3
       - service: sonos.restore
         entity_id: all
