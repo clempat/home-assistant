@@ -111,7 +111,8 @@ automation:
     action:
       - alias: "Turn on the light"
         service: light.turn_on
-        target: light.outside
+        target: 
+          entity_id: light.outside
       - alias: "Wait until there is no motion from device"
         wait_for_trigger:
           platform: state
@@ -122,7 +123,8 @@ automation:
         delay: 120
       - alias: "Turn off the light"
         service: light.turn_off
-        target: light.outside
+        target: 
+          entity_id: light.outside
         
         
 
