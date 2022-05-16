@@ -36,8 +36,7 @@ automation:
         for:
           minutes: 5
     condition:
-      condition: and
-      conditions:
+      and:
         - condition: state
           entity_id: light.cellar_bedroom
           state: "off"
@@ -73,8 +72,7 @@ automation:
         attribute: brightness
         above: 30
     condition:
-      condition: and
-      conditions:
+      and:
         - condition: time
           after: "05:00:00"
           before: "10:00:00"
@@ -100,8 +98,7 @@ automation:
         attribute: current_position
         above: 30
     condition:
-      condition: and
-      conditions:
+      and:
         - condition: time
           after: "06:00:00"
           before: "11:00:00"
@@ -122,8 +119,7 @@ automation:
         entity_id: switch.plug_kitchen_plan
         to: "on"
     condition:
-      condition: and
-      conditions:
+      and:
         - condition: time
           after: "11:00:00"
           before: "14:00:00"
@@ -166,8 +162,7 @@ automation:
         attribute: current_position
         below: 20
     condition:
-      condition: and
-      conditions:
+      and:
         - condition: time
           after: "17:00:00"
           before: "22:00:00"

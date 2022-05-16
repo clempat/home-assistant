@@ -891,11 +891,10 @@ automation:
       for:
         minutes: 30
     condition: 
-      - condition: not
-        conditions:
-          - condition: state
-            entity_id: input_select.heating_mode
-            state:  'Été'
+      not:
+        - condition: state
+          entity_id: input_select.heating_mode
+          state:  'Été'
     action:
       - alias: "Send Notification"
         service: notify.mobiles
