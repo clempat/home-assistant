@@ -13,11 +13,6 @@ homeassistant:
 frontend:
   themes: !include_dir_merge_named themes
 
-logger:
-  logs:
-    aiohomekit: debug
-    homeassistant.components.homekit_controller: debug
-
 browser_mod:
   prefix: "browser_"
 
