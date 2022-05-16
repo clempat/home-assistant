@@ -93,12 +93,39 @@ automation:
   - id: '9d853aff-4679-4c0c-af2f-fff3318f6f2f'
     alias: Lights >> Outside
     description: Handle lights when motion outside
-    use_blueprint:
-      path: homeassistant/motion_light.yaml
-      input:
-        motion_entity: binary_sensor.motion_outside
-        light_target:
-          entity_id: light.outside
+
+    mode: restart
+    max_exceeded: silent
+      
+    trigger:
+      platform: state
+      entity_id: binary_sensor.motion_outside
+      from: "off"
+      to: "on"
+    
+    condition:
+      and:
+        - platform: state
+          entity_id: sun.sun
+          state: "below_horizon"
+
+    action:
+      - alias: "Turn on the light"
+        service: light.turn_on
+        target: light.outside
+      - alias: "Wait until there is no motion from device"
+        wait_for_trigger:
+          platform: state
+          entity_id: binary_sensor.motion_outside
+          from: "on"
+          to: "off"
+      - alias: "Wait the number of seconds that has been set"
+        delay: 120
+      - alias: "Turn off the light"
+        service: light.turn_off
+        target: light.outside
+        
+        
 
   - id: 'f322994d-cf02-48ed-852d-602f20cc4e6a'
     alias: Lights >> Mezzanine
