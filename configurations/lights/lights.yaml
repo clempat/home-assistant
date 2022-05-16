@@ -104,10 +104,9 @@ automation:
       to: "on"
     
     condition:
-      and:
-        - platform: state
-          entity_id: sun.sun
-          state: "below_horizon"
+      condition: state
+      entity_id: sun.sun
+      state: "below_horizon"
 
     action:
       - alias: "Turn on the light"
