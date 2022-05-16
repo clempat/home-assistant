@@ -18,6 +18,10 @@ notify:
     services:
       - service: mobiles
       - service: tablets
+  - name: pushover
+    platform: pushover
+    api_key: !env_var pushover_api_key
+    user_key: !env_var pushover_user_key
 
 input_boolean:
   live:
