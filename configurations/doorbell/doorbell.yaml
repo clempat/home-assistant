@@ -74,9 +74,9 @@ script:
       - service: media_player.play_media
         data:
           entity_id:
-            - media_player.sonos_roam
+            - media_player.sonos_roam 
             - media_player.kuche
-            - media_player.wohnzimmer
+            - media_player.wohnzimmer 
           media_content_id: media-source://media_source/local/sounds/sncf_new.wav
           media_content_type: music
       - delay:
