@@ -28,13 +28,27 @@ script:
   display_gate_stream:
     alias: "Camera >> Display camera on Google Nest"
     sequence:
-      - service: camera.play_stream
-        data:
-          media_player: media_player.nest_hub_bureau_clement
+      - service: media_player.play_media
         target:
-          entity_id: camera.gate
+          entity_id:
+            - media_player.nesthub82bd
+            - media_player.nest_hub_bureau_clement
+        data:
+          media_content_id: media-source://camera/camera.gate
+          media_content_type: image/jpeg
+        metadata:
+          title: gate
+          thumbnail: /api/camera_proxy/camera.gate
+          media_class: video
+          children_media_class: null
+          navigateIds:
+            - {}
+            - media_content_type: app
+              media_content_id: media-source://camera
       - delay:
           minutes: 1
       - service: media_player.turn_off
         target:
-          entity_id: media_player.nest_hub_bureau_clement
+          entity_id: 
+            - media_player.nesthub82bd
+            - media_player.nest_hub_bureau_clement

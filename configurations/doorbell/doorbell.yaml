@@ -15,8 +15,9 @@ automation:
         service: script.turn_on
         entity_id: script.notify_sncf_sonos # script.turn_on won't wait/impact parent
       # Did not work with proxy camera
-      # - alias: "Display camera feed"
-      #  service: script.display_gate_stream
+      - alias: "Display camera feed"
+        service: script.turn_on
+        entity_id: script.display_gate_stream
       - alias: "Send Notification"
         service: notify.mobiles
         data:
