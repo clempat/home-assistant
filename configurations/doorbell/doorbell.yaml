@@ -12,7 +12,8 @@ automation:
 
     action:
       - alias: "Play SNCF on sonos"
-        service: script.notify_sncf_sonos
+        service: script.turn_on
+        entity_id: script.notify_sncf_sonos # script.turn_on won't wait/impact parent
       # Did not work with proxy camera
       # - alias: "Display camera feed"
       #  service: script.display_gate_stream
