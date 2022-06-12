@@ -23,7 +23,6 @@ Media will group everything about music, videos...
 
 # Features
 
-- [x] Automate light according to media player living room
 - [ ] Music follow presence when playing
 - [ ] More stable app opening with Harmony
 

@@ -9,6 +9,9 @@ light:
   - platform: switch
     name: outside
     entity_id: switch.sonoff_basic_relay
+  - platform: switch
+    name: Bathroom Groundfloor
+    entity_id: switch.wall_switch_bathroom_groundfloor
   - platform: group
     name: stairs_first_floor
     entities:
@@ -40,6 +43,7 @@ light:
       - light.livingroom
       - light.kitchen
       - light.bedroom_ground_floor
+      - light.bathroom_groundfloor
   
   - platform: group
     name: Tous
@@ -238,3 +242,36 @@ automation:
             entity_id: scene.clement_not_live
           - service: switch.turn_on
             entity_id: switch.switchbotlitra_switch
+
+  # Light and TV
+  - id: a39eaac9-1eda-4c6c-92d5-a40ee5b6143e
+    alias: Lights >> switch depending on TV
+    use_blueprint:
+      path: clempat/media_scene_switcher.yaml
+      input:
+        media_player: media_player.shield
+        app_to_exclude: Spotify, Google Cast, YouTube
+        playing_scene: scene.light_watching_tv
+        paused_scene: scene.light_cozy_livingroom
+        standby_scene: scene.light_cozy_livingroom
+        idle_scene: scene.light_cozy_livingroom
+        fallback_scene: scene.light_cozy_livingroom
+
+  # Automation on leaving
+  - id: 22C7AE6D-F847-4C87-B6DF-F2B8734E27CC
+    alias: Lights >> All of when detecting as Leaving
+
+    trigger:
+      platform: state
+      entity_id: lock.entree
+      to: locked
+      from: unlocked
+
+    condition:
+      condition: time
+      after: "07:00"
+      before: "20:00"
+
+    action:
+      - service: light.turn_off
+        entity_id: light.tous

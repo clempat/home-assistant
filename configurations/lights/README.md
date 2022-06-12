@@ -27,8 +27,8 @@
 - [x] Lights on motion (Some direct binds with Zigbee)
 - [x] Switches for lights (Some direct bind with Zigbee)
 - [x] Light indicating I am in meeting
-- [ ] Light changing according to TV
-- [ ] All light off when everyone left
+- [x] Light changing according to TV
+- [-] All light off when everyone left
 - [ ] Light off when really really sunny
-- [ ] Lower red light when sleeping
+- [x] Lower red light when sleeping
 - [ ] Randomize some lights when away
