@@ -1,0 +1,15 @@
+---
+id: a39eaac9-1eda-4c6c-92d5-a40ee5b6143e
+alias: handle_light_tv
+description: "Scene switcher when media is playing in livingroom"
+use_blueprint:
+  path: clempat/media_scene_switcher.yaml
+  input:
+    media_player: media_player.shield
+    app_to_exclude: Spotify, Google Cast, YouTube
+    playing_scene: scene.light_watching_tv
+    paused_scene: scene.light_cozy_livingroom
+    standby_scene: scene.light_cozy_livingroom
+    idle_scene: scene.light_cozy_livingroom
+    fallback_scene: scene.light_cozy_livingroom
+
