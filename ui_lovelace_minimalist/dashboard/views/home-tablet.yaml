@@ -133,13 +133,22 @@ cards:
       ulm_card_vacuum_name: "Aspirateur Cuisine"
       ulm_card_vacuum_room: "script.vacuum_kitchen"
       ulm_card_vacuum_room_icon: "mdi:table-chair"
-  
-  - type: 'custom:button-card'
-    template: card_power_outlet
-    variables:
-      ulm_card_power_outlet_consumption_sensor: sensor.pool_pomp_electric_consumption_w
-    entity: switch.pool_pomp
-    name: Filtration Piscine
+
+  - type: horizontal-stack
+    cards:
+    - type: 'custom:button-card'
+      template: card_power_outlet
+      variables:
+        ulm_card_power_outlet_consumption_sensor: sensor.pool_pomp_electric_consumption_w
+      entity: switch.pool_pomp
+      name: Filtration Piscine
+        
+    - type: 'custom:button-card'
+      template: card_power_outlet
+      variables:
+        ulm_card_power_outlet_consumption_sensor: sensor.plug_battery_bike_electric_consumption_w
+      entity: switch.plug_battery_bike
+      name: Batterie Vélo
 
   - type: vertical-stack
     cards:
