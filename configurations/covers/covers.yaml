@@ -11,7 +11,7 @@ scene:
     entities:
       cover.first_floor:
         state: open
-        current_position: 13
+        current_position: 20
       cover.livingroom_cover_patio: closed
       cover.livingroom_cover_sofa: closed
 
@@ -19,7 +19,19 @@ scene:
     entities:
       cover.first_floor:
         state: open
-        current_position: 13
+        current_position: 20
+
+  - name: Covers Heat Weekday
+    entities:
+      cover.first_floor:
+        state: open
+        current_position: 40
+          
+  - name: Covers Heat Weekend
+    entities:
+      cover.first_floor:
+        state: open
+        current_position: 60
 
 cover:
   - platform: group
@@ -57,3 +69,14 @@ script:
         state: "below_horizon"
       - service: cover.close_cover
         entity_id: cover.ground_floor
+
+# automation:
+#   - id: 01472ED0-F724-463F-B329-219B2910DB97
+#     alias: cover >> close when hot days
+#     trigger:
+#       - platform: time
+#         at: '09:30'
+#           
+#     condition:
+#       - and:
+#         - condition: state

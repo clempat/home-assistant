@@ -251,11 +251,11 @@ automation:
       input:
         media_player: media_player.shield
         app_to_exclude: Spotify, Google Cast, YouTube
-        playing_scene: scene.light_watching_tv
-        paused_scene: scene.light_cozy_livingroom
-        standby_scene: scene.light_cozy_livingroom
-        idle_scene: scene.light_cozy_livingroom
-        fallback_scene: scene.light_cozy_livingroom
+        playing_scene: scene.light_livingroom_tv
+        paused_scene: scene.light_livingroom_pause
+        standby_scene: scene.light_livingroom_pause
+        idle_scene: scene.light_livingroom_pause
+        fallback_scene: scene.light_livingroom_pause
 
   # Automation on leaving
   - id: 22C7AE6D-F847-4C87-B6DF-F2B8734E27CC
