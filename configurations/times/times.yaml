@@ -160,7 +160,7 @@ automation:
         entity_id:
           - cover.first_floor
         attribute: current_position
-        below: 20
+        below: 25
     condition:
       and:
         - condition: time
