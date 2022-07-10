@@ -5,6 +5,7 @@ cards:
   - type: "custom:button-card"
     template: "card_esh_welcome"
     triggers_update: "input_boolean.welcome_toggle"
+    entity: weather.maison
     variables:
       ulm_card_esh_welcome_collapse: input_boolean.welcome_toggle
       ulm_card_welcome_user: true
@@ -38,6 +39,7 @@ cards:
     cards:
       - type: "custom:button-card"
         template: card_person
+        entity: person.clement_patout
         variables:
           ulm_card_person_entity: person.clement_patout
           ulm_card_person_zone1: zone.enpal
@@ -45,6 +47,7 @@ cards:
           ulm_card_person_use_entity_picture: true
       - type: "custom:button-card"
         template: card_person
+        entity: person.melanie_patout
         variables:
           ulm_card_person_entity: person.melanie_patout
           ulm_card_person_zone1: zone.kcw
