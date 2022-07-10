@@ -136,13 +136,12 @@ cards:
 
   - type: horizontal-stack
     cards:
-    - type: 'custom:button-card'
-      template: card_power_outlet
-      entity: switch.pool_pomp
-      variables:
-        ulm_card_power_outlet_consumption_sensor: sensor.pool_pomp_electric_consumption_w
-      entity: switch.pool_pomp
-      name: Filtration Piscine
+    # - type: 'custom:button-card'
+    #   template: card_power_outlet
+    #   variables:
+    #     ulm_card_power_outlet_consumption_sensor: sensor.pool_pomp_electric_consumption_w
+    #   entity: switch.pool_pomp
+    #   name: Filtration Piscine
         
     - type: 'custom:button-card'
       template: card_power_outlet
