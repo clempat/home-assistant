@@ -158,7 +158,7 @@ automation:
           minutes: 10
       - platform: state
         entity_id: light.kids_rooms
-        to: off
+        to: "off"
         for:
           minutes: 10
       - platform: numeric_state
