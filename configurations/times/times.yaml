@@ -156,6 +156,11 @@ automation:
         below: 30
         for:
           minutes: 10
+      - platform: state
+        entity_id: light.kids_rooms
+        to: off
+        for:
+          minutes: 10
       - platform: numeric_state
         entity_id:
           - cover.first_floor
@@ -171,10 +176,10 @@ automation:
           state: "Après Midi"
         - alias: "Low light"
           condition: template
-          value_template: "{{  state_attr('light.kids_rooms', 'brightness') | int < 30 }}"
+          value_template: "{{  state_attr('light.kids_rooms', 'brightness') or 0 | int < 30 }}"
         - alias: "covers down"
           condition: template
-          value_template: "{{  state_attr('cover.first_floor', 'current_position') | int < 20 }}"
+          value_template: "{{  state_attr('cover.first_floor', 'current_position') | int < 25 }}"
     action:
       - service: input_select.select_option
         entity_id: input_select.time_of_day
