@@ -249,7 +249,7 @@ automation:
     use_blueprint:
       path: clempat/media_scene_switcher.yaml
       input:
-        media_player: media_player.shield
+        media_player: media_player.android_tv_192_168_10_6
         app_to_exclude: Spotify, Google Cast, YouTube
         playing_scene: scene.light_livingroom_tv
         paused_scene: scene.light_livingroom_pause
