@@ -36,7 +36,7 @@ script:
         data:
           media_content_id: media-source://camera/camera.gate
           media_content_type: image/jpeg
-        extra:
+        metadata:
           title: gate
           thumbnail: /api/camera_proxy/camera.gate
           media_class: video
