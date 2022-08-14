@@ -86,9 +86,9 @@ cards:
           entity_4:
             entity_id: "scene.covers_heat"
             icon: "mdi:hot-tub"
-            icon_color: "yellow"
+            icon_color: "red"
             name: "Chaud"
-            bg_color: "orange"
+            bg_color: "red"
   
   - type: vertical-stack
     cards:
