@@ -83,6 +83,12 @@ cards:
             icon_color: "purple"
             name: "Nuit"
             bg_color: "purple"
+          entity_4:
+            entity_id: "scene.covers_heat"
+            icon: "mdi:hot-tub"
+            icon_color: "orange"
+            name: "Haute Température"
+            bg_color: "orange"
   
   - type: vertical-stack
     cards:

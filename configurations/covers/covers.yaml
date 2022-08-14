@@ -21,17 +21,14 @@ scene:
         state: open
         current_position: 20
 
-  - name: Covers Heat Weekday
+  - name: Covers Heat
     entities:
       cover.first_floor:
+        state: open
+        current_position: 50
+      cover.livingroom_cover_sofa:
         state: open
         current_position: 40
-          
-  - name: Covers Heat Weekend
-    entities:
-      cover.first_floor:
-        state: open
-        current_position: 60
 
 cover:
   - platform: group
