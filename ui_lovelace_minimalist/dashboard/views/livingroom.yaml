@@ -18,6 +18,7 @@ cards:
           
           - type: 'custom:button-card'
             template: card_graph
+            entity: sensor.temperature_salon
             variables:
               ulm_card_graph_color: "var(--google-blue)"
               ulm_card_graph_name: Temperature Salon
@@ -27,6 +28,7 @@ cards:
 
           - type: 'custom:button-card'
             template: card_graph
+            entity: sensor.humidite_salon
             variables:
               ulm_card_graph_color: "var(--google-red)"
               ulm_card_graph_name: Humidité Salon
