@@ -8,7 +8,6 @@
 
 ## Integrations
 
-- Deutsche Bahn
 - Tile
 - IOS Companion
 - Unifi
