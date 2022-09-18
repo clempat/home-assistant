@@ -62,6 +62,17 @@ blueprint:
       selector:
         entity:
           domain: scene
+    delay:
+      name: Delay
+      description: How long the state need to be maintained before changing the light. 
+      default: 0
+      selector:
+        number:
+          min: 0.0
+          max: 120.0
+          unit_of_measurement: seconds
+          step: 1.0
+          mode: slider
     fallback_scene:
       name: Default Scene
       default:
@@ -79,10 +90,13 @@ variables:
   off_scene: !input "off_scene"
   standby_scene: !input "standby_scene"
   fallback_scene: !input "fallback_scene"
+  delay: !input "delay"
 
 trigger:
   platform: state
   entity_id: !input media_player
+  for:
+    seconds: !input delay
 
 action:
   - variables:
