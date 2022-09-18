@@ -15,7 +15,7 @@ camera:
   - platform: proxy
     name: gate
     entity_id: camera.jardin_ffmpeg
-    image_left: 400
+    image_left: 350
     image_top: 240
     image_quality: 100
     max_image_width: 750
