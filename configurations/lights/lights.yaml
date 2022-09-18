@@ -301,7 +301,7 @@ automation:
           entity_id: light.kitchen_ceiling
           state: "off"
         - condition: state
-          entity_id: light.light.yeelight_ceiling_kitchen
+          entity_id: light.yeelight_ceiling_kitchen
           state: "off"
 
     action:
@@ -310,7 +310,7 @@ automation:
         target: 
           entity_id: 
             - light.kitchen_ceiling
-            - light.light.yeelight_ceiling_kitchen
+            - light.yeelight_ceiling_kitchen
         data:
           brightness_pct: 60
       - alias: "Wait until there is no motion from device"
@@ -326,4 +326,4 @@ automation:
         target: 
           entity_id: 
             - light.kitchen_ceiling
-            - light.light.yeelight_ceiling_kitchen
+            - light.yeelight_ceiling_kitchen
