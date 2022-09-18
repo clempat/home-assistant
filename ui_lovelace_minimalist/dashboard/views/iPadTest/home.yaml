@@ -2,13 +2,13 @@
 title: Maison
 path: home
 type: sidebar
-card-mod-view-yaml: |
-    hui-sidebar-view $: |
-      .container {
-        flex-direction: row-reverse;
-      }
 cards:
   - type: vertical-stack
+    card-mod-view-yaml: |
+        hui-sidebar-view $: |
+          .container {
+            flex-direction: row-reverse;
+          }
     view_layout:
       position: sidebar
     cards:
