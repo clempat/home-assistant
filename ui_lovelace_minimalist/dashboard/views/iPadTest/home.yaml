@@ -1,0 +1,58 @@
+---
+title: Maison
+path: home
+type: sidebar
+cards:
+  - type: vertical-stack
+    view_layout:
+      position: sidebar
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: card_person
+            variables:
+              ulm_card_person_entity: person.clement_patout
+              ulm_card_person_zone1: zone.enpal
+              ulm_card_person_zone2: zone.kita
+              ulm_card_person_use_entity_picture: true
+          - type: "custom:button-card"
+            template: card_person
+            variables:
+              ulm_card_person_entity: person.melanie_patout
+              ulm_card_person_zone1: zone.kcw
+              ulm_card_person_zone2: zone.ecole
+              ulm_card_person_use_entity_picture: true
+      - type: weather-forecast
+        entity: weather.maison
+  
+  - type: "custom:button-card"
+    view_layout:
+      position: main
+    template:
+      - card_scenes
+    variables:
+      entity_1:
+        entity_id: "scene.covers_all_open"
+        icon: "mdi:weather-sunny"
+        icon_color: "yellow"
+        name: "Jour"
+        bg_color: "yellow"
+      entity_2:
+        entity_id: "scene.covers_night_upstairs"
+        icon: "mdi:weather-sunset-down"
+        icon_color: "blue"
+        name: "Soir"
+        bg_color: "blue"
+      entity_3:
+        entity_id: "scene.covers_night"
+        icon: "mdi:weather-night"
+        icon_color: "purple"
+        name: "Nuit"
+        bg_color: "purple"
+      entity_4:
+        entity_id: "scene.covers_heat"
+        icon: "mdi:hot-tub"
+        icon_color: "red"
+        name: "Chaud"
+        bg_color: "red"
