@@ -9,6 +9,14 @@ tts:
 
 homeassistant:
   packages: !include_dir_named configurations
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.0.0/16
+      trusted_users:
+        - 27f7fcd2f4db49b5b8c07f7bad6f6414
+      allow_bypass_login: true
+    - type: homeassistant
 
 frontend:
   themes: !include_dir_merge_named themes
