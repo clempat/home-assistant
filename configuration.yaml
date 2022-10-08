@@ -15,7 +15,7 @@ homeassistant:
       trusted_networks:
         - 192.168.0.0/16
       trusted_users:
-        - 27f7fcd2f4db49b5b8c07f7bad6f6414
+        192.168.0.0/16: 27f7fcd2f4db49b5b8c07f7bad6f6414
       allow_bypass_login: true
 
 frontend:
