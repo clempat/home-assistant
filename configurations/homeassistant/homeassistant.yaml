@@ -84,7 +84,7 @@ influxdb:
   api_version: 2
   host: !env_var influxdb_host
   token: !env_var influxdb_token
-  organization: !env_var organization
+  organization: !env_var influxdb_organization
   bucket: homeassistant
   tags:
     source: HA
