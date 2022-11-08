@@ -5,7 +5,7 @@ notify:
   - name: mobiles
     platform: group
     services:
-      - service: mobile_app_clement
+      - service: mobile_app_iphone_clement
       - service: mobile_app_iphone_von_melanie
 
   - name: tablets
