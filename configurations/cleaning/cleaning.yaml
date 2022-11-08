@@ -9,7 +9,8 @@ binary_sensor:
     sensors:
       dryer:
         icon_template: >-
-          {% if states('sensor.dryer_w') | int > 5 %}
+          {% set state = states('sensor.dryer_w') %}
+          {% if is_number(states) and state | int > 5 %}
             mdi:washing-machine
           {% else %}
             mdi:washing-machine-off
@@ -29,7 +30,8 @@ binary_sensor:
     sensors:
       washing_machine:
         icon_template: >-
-          {% if states('sensor.washing_machine_w') | int > 5 %}
+          {% set state = states('sensor.washing_machine_w') %}
+          {% if is_number(states) and state | int > 5 %}
             mdi:washing-machine
           {% else %}
             mdi:washing-machine-off
@@ -38,7 +40,12 @@ binary_sensor:
         delay_off:
           minutes: 2
         value_template: >-
-          {{  states('sensor.washing_machine_w') | int > 5 }}
+          {%- set state = states('sensor.washing_machine_w') -%}
+          {%- if is_number(state) -%}
+            {{ state | int > 5 }}
+          {%- else -%}
+            unknown
+          {%- endif -%}
 
 automation:
   - alias: turn_on_washing_machine_full
