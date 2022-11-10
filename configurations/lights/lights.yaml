@@ -94,41 +94,41 @@ automation:
           entity_id: light.ikea_entrance
 
 
-  - id: '9d853aff-4679-4c0c-af2f-fff3318f6f2f'
-    alias: Lights >> Outside
-    description: Handle lights when motion outside
-
-    mode: restart
-    max_exceeded: silent
-      
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_outside
-      from: "off"
-      to: "on"
-    
-    condition:
-      condition: state
-      entity_id: sun.sun
-      state: "below_horizon"
-
-    action:
-      - alias: "Turn on the light"
-        service: light.turn_on
-        target: 
-          entity_id: light.outside
-      - alias: "Wait until there is no motion from device"
-        wait_for_trigger:
-          platform: state
-          entity_id: binary_sensor.motion_outside
-          from: "on"
-          to: "off"
-      - alias: "Wait the number of seconds that has been set"
-        delay: 120
-      - alias: "Turn off the light"
-        service: light.turn_off
-        target: 
-          entity_id: light.outside
+  # - id: '9d853aff-4679-4c0c-af2f-fff3318f6f2f'
+  #   alias: Lights >> Outside
+  #   description: Handle lights when motion outside
+  #
+  #   mode: restart
+  #   max_exceeded: silent
+  #     
+  #   trigger:
+  #     platform: state
+  #     entity_id: binary_sensor.motion_outside
+  #     from: "off"
+  #     to: "on"
+  #   
+  #   condition:
+  #     condition: state
+  #     entity_id: sun.sun
+  #     state: "below_horizon"
+  #
+  #   action:
+  #     - alias: "Turn on the light"
+  #       service: light.turn_on
+  #       target: 
+  #         entity_id: light.outside
+  #     - alias: "Wait until there is no motion from device"
+  #       wait_for_trigger:
+  #         platform: state
+  #         entity_id: binary_sensor.motion_outside
+  #         from: "on"
+  #         to: "off"
+  #     - alias: "Wait the number of seconds that has been set"
+  #       delay: 120
+  #     - alias: "Turn off the light"
+  #       service: light.turn_off
+  #       target: 
+  #         entity_id: light.outside
         
         
 
@@ -277,53 +277,53 @@ automation:
       - service: light.turn_off
         entity_id: light.tous
 
-  - id: 3AFE4F0A-84B9-4CD7-876A-DD7EA1C98DF5
-    alias: Lights >> Toggle kitchen on motion nights
-
-    description: Handle Kitchen lights
-
-    mode: restart
-    max_exceeded: silent
-      
-    trigger:
-      platform: state
-      entity_id: binary_sensor.motion_kitchen
-      from: "off"
-      to: "on"
-    
-    condition:
-      condition: and
-      conditions:
-        - condition: state
-          entity_id: sun.sun
-          state: "below_horizon"
-        - condition: state
-          entity_id: light.kitchen_ceiling
-          state: "off"
-        - condition: state
-          entity_id: light.yeelight_ceiling_kitchen
-          state: "off"
-
-    action:
-      - alias: "Turn on the light"
-        service: light.turn_on
-        target: 
-          entity_id: 
-            - light.kitchen_ceiling
-            - light.yeelight_ceiling_kitchen
-        data:
-          brightness_pct: 60
-      - alias: "Wait until there is no motion from device"
-        wait_for_trigger:
-          platform: state
-          entity_id: binary_sensor.motion_kitchen
-          from: "on"
-          to: "off"
-      - alias: "Wait the number of seconds that has been set"
-        delay: 120
-      - alias: "Turn off the light"
-        service: light.turn_off
-        target: 
-          entity_id: 
-            - light.kitchen_ceiling
-            - light.yeelight_ceiling_kitchen
+  # - id: 3AFE4F0A-84B9-4CD7-876A-DD7EA1C98DF5
+  #   alias: Lights >> Toggle kitchen on motion nights
+  #
+  #   description: Handle Kitchen lights
+  #
+  #   mode: restart
+  #   max_exceeded: silent
+  #     
+  #   trigger:
+  #     platform: state
+  #     entity_id: binary_sensor.motion_kitchen
+  #     from: "off"
+  #     to: "on"
+  #   
+  #   condition:
+  #     condition: and
+  #     conditions:
+  #       - condition: state
+  #         entity_id: sun.sun
+  #         state: "below_horizon"
+  #       - condition: state
+  #         entity_id: light.kitchen_ceiling
+  #         state: "off"
+  #       - condition: state
+  #         entity_id: light.yeelight_ceiling_kitchen
+  #         state: "off"
+  #
+  #   action:
+  #     - alias: "Turn on the light"
+  #       service: light.turn_on
+  #       target: 
+  #         entity_id: 
+  #           - light.kitchen_ceiling
+  #           - light.yeelight_ceiling_kitchen
+  #       data:
+  #         brightness_pct: 60
+  #     - alias: "Wait until there is no motion from device"
+  #       wait_for_trigger:
+  #         platform: state
+  #         entity_id: binary_sensor.motion_kitchen
+  #         from: "on"
+  #         to: "off"
+  #     - alias: "Wait the number of seconds that has been set"
+  #       delay: 120
+  #     - alias: "Turn off the light"
+  #       service: light.turn_off
+  #       target: 
+  #         entity_id: 
+  #           - light.kitchen_ceiling
+  #           - light.yeelight_ceiling_kitchen
