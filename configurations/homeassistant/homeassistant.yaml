@@ -22,7 +22,8 @@ shell_command:
                                                                                                                                                                                  
 logger:                                                                                                                                                                          
   default: warn                                                                                                                                                                  
-  #logs:                                                                                                                                                                         
+  logs:                                                                                                                                                                         
+    homeassistant.components.influxdb: debug
   #  homeassistant.components.homekit_controller: debug                                                                                                                          
   #  aiohomekit: debug
 
