@@ -21,9 +21,8 @@ shell_command:
   update_config: cd /config && git pull                                                                                                                                          
                                                                                                                                                                                  
 logger:                                                                                                                                                                          
-  default: info
-  logs:                                                                                                                                                                         
-    homeassistant.components.influxdb: debug
+  default: warn
+  # logs:                                                                                                                                                                         
   #  homeassistant.components.homekit_controller: debug                                                                                                                          
   #  aiohomekit: debug
 
