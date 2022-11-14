@@ -467,6 +467,8 @@ climate:
     unique_id: 83f2b8bb-4c8b-4e0b-b429-1dab46d70829
     heater: switch.heating_livingroom
     target_sensor: sensor.temperature_salon
+    comfort_temp: input_number.heating_livingroom_mode_confort
+    home_temp: input_number.heating_livingroom_mode_eco
     <<: &climate_commun
       min_temp: 16
       max_temp: 23
@@ -478,6 +480,8 @@ climate:
     unique_id: c0839442-d1e3-4784-bbec-4a2da4c4d4ba
     heater: group.heating_kitchen
     target_sensor: sensor.temperature_cuisine
+    comfort_temp: input_number.heating_kitchen_mode_confort
+    home_temp: input_number.heating_kitchen_mode_eco
     <<: *climate_commun
 
   - platform: generic_thermostat
@@ -485,6 +489,8 @@ climate:
     unique_id: c319e4b0-05da-4acc-bc21-6cd05310de18
     heater: switch.heating_office_melanie
     target_sensor: sensor.temperature_bureau_melanie
+    comfort_temp: input_number.heating_office_melanie_mode_confort
+    home_temp: input_number.heating_office_melanie_mode_eco
     <<: *climate_commun
 
   - platform: generic_thermostat
@@ -492,6 +498,8 @@ climate:
     unique_id: 8ba00103-6184-4fb7-97d2-3f08766af04f
     heater: switch.heating_office_clement
     target_sensor: sensor.temperature_bureau_clement
+    comfort_temp: input_number.heating_bedroom_cellar_mode_confort
+    home_temp: input_number.heating_bedroom_cellar_mode_eco
     <<: *climate_commun
 
   - platform: generic_thermostat
@@ -499,6 +507,8 @@ climate:
     unique_id: c635b55f-8730-4edc-bed8-ab8fd939094b
     heater: group.heating_stairs
     target_sensor: sensor.temperature_escalier
+    comfort_temp: input_number.heating_stairs_mode_confort
+    home_temp: input_number.heating_stairs_mode_eco
     <<: *climate_commun
 
   - platform: generic_thermostat
@@ -506,6 +516,8 @@ climate:
     unique_id: 9c4ba8e3-406e-4a87-9867-7911e8cd5603
     heater: group.heating_florian_bedroom
     target_sensor: sensor.temperature_chambre_florian
+    comfort_temp: input_number.heating_florian_bedroom_mode_confort
+    home_temp: input_number.heating_florian_bedroom_mode_eco
     <<: *climate_commun
 
   - platform: generic_thermostat
@@ -513,6 +525,8 @@ climate:
     unique_id: dc873819-1c23-45f6-9aa3-dade9f77792c
     heater: switch.heating_girls_bedroom
     target_sensor: sensor.temperature_chambre_filles
+    comfort_temp: input_number.heating_bedroom_girls_mode_confort
+    home_temp: input_number.heating_bedroom_girls_mode_eco
     <<: *climate_commun
 
   - platform: generic_thermostat
@@ -520,6 +534,8 @@ climate:
     unique_id: 22678041-13fd-40e9-a703-931227ac4281
     heater: switch.heating_bedroom_roof
     target_sensor: sensor.temperature_chambre_toit
+    comfort_temp: input_number.heating_bedroom_roof_mode_confort
+    home_temp: input_number.heating_bedroom_roof_mode_eco
     <<: *climate_commun
 
   - platform: generic_thermostat
@@ -527,6 +543,8 @@ climate:
     unique_id: 1f87576d-8e6b-4b46-a486-58ff50d03c27
     heater: switch.heating_mezzanine
     target_sensor: sensor.temperature_mezzanine
+    comfort_temp: input_number.heating_mezzanine_mode_confort
+    home_temp: input_number.heating_mezzanine_mode_eco
     <<: *climate_commun
 
   - platform: generic_thermostat
@@ -534,6 +552,8 @@ climate:
     unique_id: a4760fff-c3a7-420d-8ac8-9c39a4ddd434
     heater: switch.heating_laundryroom
     target_sensor: sensor.temperature_laverie
+    comfort_temp: input_number.heating_laundryroom_mode_confort
+    home_temp: input_number.heating_laundryroom_mode_eco
     <<: *climate_commun
 
   - platform: generic_thermostat
@@ -541,6 +561,8 @@ climate:
     unique_id: 6a4c1198-efe2-423c-b9af-a3e3e41a8985
     heater: switch.heating_bathroom
     target_sensor: sensor.temperature_salle_de_bain
+    comfort_temp: input_number.heating_bathroom_mode_confort
+    home_temp: input_number.heating_bathroom_mode_eco
     <<: *climate_commun
 
   - platform: generic_thermostat
@@ -548,6 +570,8 @@ climate:
     unique_id: d311f9d2-914b-41fd-8222-832abbed865c
     heater: switch.heating_entrance
     target_sensor: sensor.temperature_entree
+    comfort_temp: input_number.heating_entrance_mode_confort
+    home_temp: input_number.heating_entrance_mode_eco
     <<: *climate_commun
 
 # Automations
