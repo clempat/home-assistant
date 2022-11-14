@@ -26,6 +26,8 @@ jobs:
           find . -type f -name "*.yaml" -print0 | xargs -0 sed -i 's/\!env_var .*$/xxxxxxxxx/g'
           # Delete browser_mod bloc
           sed -i '/browser_mod:/,/^$/d' configuration.yaml
+          # Delete powercalc
+          sed -i '/-\s*platform:\s*powercalc/,/^$/d' configurations/heating/heating.yaml
           echo [] > automations.yaml
           echo [] > scripts.yaml
           echo [] > scenes.yaml

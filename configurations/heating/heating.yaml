@@ -1091,98 +1091,132 @@ sensor:
   - platform: history_stats
     name: Temps chauffage Salon Aujourd'hui
     entity_id: switch.heating_livingroom
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: &common_history_sensor
+      state: 'on'
+      type: time
+      start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+      end: '{{ now() }}'
   - platform: history_stats
     name: Temps chauffage Cuisine Aujourd'hui
     entity_id: group.heating_kitchen
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Salle de bain Aujourd'hui
     entity_id: switch.heating_bathroom
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Chambre Cave Aujourd'hui
     entity_id: switch.heating_office_clement
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Chambre RDC Aujourd'hui
     entity_id: switch.heating_office_melanie
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Chambre 1er Aujourd'hui
     entity_id: switch.heating_girls_bedroom
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Chambre Florian Aujourd'hui
     entity_id: group.heating_florian_bedroom
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Chambre Toit Aujourd'hui
     entity_id: switch.heating_bedroom_roof
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Entrée Aujourd'hui
     entity_id: switch.heating_entrance
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Mezzanine Aujourd'hui
     entity_id: switch.heating_mezzanine
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Escalier Cave Aujourd'hui
     entity_id: switch.heating_stairs_cellar
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Escalier RDC Aujourd'hui
     entity_id: switch.heating_stairs_groundfloor
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Escalier 1er Aujourd'hui
     entity_id: switch.heating_stairs_firstfloor
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
   - platform: history_stats
     name: Temps chauffage Buanderie Aujourd'hui
     entity_id: switch.heating_laundryroom
-    state: 'on'
-    type: time
-    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
-    end: '{{ now() }}'
+    <<: *common_history_sensor
+
+  # Powercalc
+  - platform: powercalc
+    name: Consommation chauffage Salon Aujourd'hui
+    entity_id: switch.heating_livingroom
+    fixed:
+      power:  2650
+  - platform: powercalc
+    name: Consommation chauffage Cuisine Aujourd'hui
+    entity_id: group.heating_kitchen
+    fixed:
+      power:  1300
+  - platform: powercalc
+    name: Consommation chauffage Salle de bain Aujourd'hui
+    entity_id: switch.heating_bathroom
+    fixed:
+      power: 850
+  - platform: powercalc
+    name: Consommation chauffage Chambre Cave Aujourd'hui
+    entity_id: switch.heating_office_clement
+    fixed:
+      power: 1000
+  - platform: powercalc
+    name: Consommation chauffage Chambre RDC Aujourd'hui
+    entity_id: switch.heating_office_melanie
+    fixed:
+      power: 1000
+  - platform: powercalc
+    name: Consommation chauffage Chambre 1er Aujourd'hui
+    entity_id: switch.heating_girls_bedroom
+    fixed:
+      power: 1000
+  - platform: powercalc
+    name: Consommation chauffage Chambre Florian Aujourd'hui
+    entity_id: group.heating_florian_bedroom
+    fixed:
+      power: 1700
+  - platform: powercalc
+    name: Consommation chauffage Chambre Toit Aujourd'hui
+    entity_id: switch.heating_bedroom_roof
+    fixed:
+      power: 400
+  - platform: powercalc
+    name: Consommation chauffage Entrée Aujourd'hui
+    entity_id: switch.heating_entrance
+    fixed:
+      power: 400
+  - platform: powercalc
+    name: Consommation chauffage Mezzanine Aujourd'hui
+    entity_id: switch.heating_mezzanine
+    fixed:
+      power: 850
+  - platform: powercalc
+    name: Consommation chauffage Escalier Cave Aujourd'hui
+    entity_id: switch.heating_stairs_cellar
+    fixed:
+      power: 1000
+  - platform: powercalc
+    name: Consommation chauffage Escalier RDC Aujourd'hui
+    entity_id: switch.heating_stairs_groundfloor
+    fixed:
+      power: 850
+  - platform: powercalc
+    name: Consommation chauffage Escalier 1er Aujourd'hui
+    entity_id: switch.heating_stairs_firstfloor
+    fixed:
+      power: 850
+  - platform: powercalc
+    name: Consommation chauffage Buanderie Aujourd'hui
+    entity_id: switch.heating_laundryroom
+    fixed:
+      power: 650
