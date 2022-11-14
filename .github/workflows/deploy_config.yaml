@@ -27,6 +27,7 @@ jobs:
           # Delete browser_mod bloc
           sed -i '/browser_mod:/,/^$/d' configuration.yaml
           # Delete powercalc
+          sed -i '/powercalc:/,/^$/d' configuration.yaml
           sed -i '/-\s*platform:\s*powercalc/,/^$/d' configurations/heating/heating.yaml
           echo [] > automations.yaml
           echo [] > scripts.yaml
