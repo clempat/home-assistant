@@ -32,6 +32,7 @@ trigger:
     event_type: event_updates_presets_heating
 
 action:
+  # TODO update input_number of current preset with value?
   - service: climate.set_temperature
     target:
       entity_id: !input climate

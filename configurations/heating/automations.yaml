@@ -1,0 +1,383 @@
+---
+# Automations
+automation:
+  # Automation Eco/Comfort
+  - alias: Heating >> Eco when all are sleeping
+    id: d73c4055-ba14-477d-893a-a4dd45515523
+    description: Shuting all down when everyone is in bed
+    trigger:
+      platform: state
+      entity_id: input_select.time_of_day
+      to: "Dormir"
+    action:
+      service: input_select.select_option
+      data:
+        option: Eco
+        entity_id:
+          - input_select.heating_bathroom_mode
+          - input_select.heating_bedroom_cellar_mode
+          - input_select.heating_florian_bedroom_mode
+          - input_select.heating_bedroom_girls_mode
+          - input_select.heating_office_melanie_mode
+          - input_select.heating_bedroom_roof_mode
+          - input_select.heating_entrance_mode
+          - input_select.heating_kitchen_mode
+          - input_select.heating_laundryroom_mode
+          - input_select.heating_livingroom_mode
+          - input_select.heating_mezzanine_mode
+          - input_select.heating_stairs_mode
+
+  - alias: Heating >> Eco when kids going to bed
+    description: Shutdown heating in some rooms when kids going to bed
+    id: c42d4abb-a9f6-471e-807d-13db9110ea3a
+    trigger:
+      platform: state
+      entity_id: input_select.time_of_day
+      to: "Soir"
+    action:
+      service: input_select.select_option
+      data:
+        option: Eco
+        entity_id:
+          - input_select.heating_florian_bedroom_mode
+          - input_select.heating_bedroom_girls_mode
+          - input_select.heating_bedroom_roof_mode
+          - input_select.heating_laundryroom_mode
+          - input_select.heating_mezzanine_mode
+          - input_select.heating_stairs_mode
+
+  - alias: Heating >> Melanie Office Eco at 20:00
+    description: Switch to ECO Melanie office at 20:00
+    id: d336a4cd-9b2d-4365-b7c8-8ef953043f73
+    trigger:
+      platform: time
+      at: "20:00:00"
+    action:
+      service: input_select.select_option
+      data:
+        option: Eco
+        entity_id:
+          - input_select.heating_office_melanie_mode
+
+  - alias: Heating >> Confort the morning
+    id: 5586ae5e-885a-45a6-b707-42a742617262
+    description: Turning the heating back on the morning
+    trigger:
+      - platform: time
+        at: "05:30:00"
+        # Maybe to improve ? get everage of time when input_select to Wake up ?
+    action:
+      service: input_select.select_option
+      data:
+        option: Confort
+        entity_id:
+          - input_select.heating_bathroom_mode
+          - input_select.heating_bedroom_cellar_mode
+          - input_select.heating_florian_bedroom_mode
+          - input_select.heating_bedroom_girls_mode
+          - input_select.heating_office_melanie_mode
+          - input_select.heating_bedroom_roof_mode
+          - input_select.heating_entrance_mode
+          - input_select.heating_kitchen_mode
+          - input_select.heating_laundryroom_mode
+          - input_select.heating_livingroom_mode
+          - input_select.heating_mezzanine_mode
+          - input_select.heating_stairs_mode
+    # TODO: When kids going to kita, when kids coming back from kita, When everyone leaving the house, when not working anymore, when vacation, when sick...
+
+# Windows
+  - id: 11ffb8e9-5894-44d9-915c-f3e96b5fb388
+    alias: Handle Windows Heating (Livingroom)
+    description: Switch climate off/on depending on windows
+    use_blueprint:
+      path: clempat/windows_heating.yaml
+      input:
+        windows: binary_sensor.open_livingroom
+        climate: climate.salon
+
+  - id: 004c435e-782e-41ad-ba1f-674c688f25c3
+    alias: Handle Windows Heating (Cuisine)
+    description: Switch climate off/on depending on windows
+    use_blueprint:
+      path: clempat/windows_heating.yaml
+      input:
+        windows: binary_sensor.open_kitchen
+        climate: climate.cuisine
+
+  # - id: 32f2ddfc-ff62-45c0-aae7-a4f240045168
+  #   alias: Handle Windows Heating (Melanie's office)
+  #   description: Switch climate off/on depending on windows
+  #   use_blueprint:
+  #     path: clempat/windows_heating.yaml
+  #     input:
+  #       windows: binary_sensor.open_melanie_s_office
+  #       climate: climate.bureau_melanie
+
+  - id: 6c739566-4b5a-4302-afbc-91afc5e5bf22
+    alias: Handle Windows Heating (Clément's office)
+    description: Switch climate off/on depending on windows
+    use_blueprint:
+      path: clempat/windows_heating.yaml
+      input:
+        windows: binary_sensor.open_clement_s_office
+        climate: climate.bureau_clement
+
+  - id: f2b005b4-10a0-4797-9d86-388d45bf152d
+    alias: Handle Windows Heating (bathroom)
+    description: Switch climate off/on depending on windows
+    use_blueprint:
+      path: clempat/windows_heating.yaml
+      input:
+        windows: binary_sensor.open_bathroom
+        climate: climate.salle_de_bain
+
+  - id: da4c2951-14fa-429a-be70-9d1f19a6bc39
+    alias: Handle Windows Heating (Girls Bedroom)
+    description: Switch climate off/on depending on windows
+    use_blueprint:
+      path: clempat/windows_heating.yaml
+      input:
+        windows: binary_sensor.open_girls_bedroom
+        climate: climate.chambre_filles
+
+  - id: fd0c0a18-81c2-4e9e-9b21-75d159055146
+    alias: Handle Windows Heating (Florian's Bedroom)
+    description: Switch climate off/on depending on windows
+    use_blueprint:
+      path: clempat/windows_heating.yaml
+      input:
+        windows: binary_sensor.open_florian_s_bedroom
+        climate: climate.chambre_florian
+
+  - id: d27e1bf6-4ab2-42d2-941e-131b30faebfe
+    alias: Handle Windows Heating (Roof's Bedroom)
+    description: Switch climate off/on depending on windows
+    use_blueprint:
+      path: clempat/windows_heating.yaml
+      input:
+        windows: binary_sensor.open_roof_bedroom
+        climate: climate.chambre_toit
+
+  - id: e7157479-98f1-49f3-9429-4879192c2ee3
+    alias: Handle Windows Heating (mezzanine)
+    description: Switch climate off/on depending on windows
+    use_blueprint:
+      path: clempat/windows_heating.yaml
+      input:
+        windows: binary_sensor.open_mezzanine
+        climate: climate.mezzanine
+
+# Some needed automations
+  - id: 70553e66-8dba-478d-a715-6d4c4aff055e
+    alias: Handle presets Heating Bathroom
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.salle_de_bain
+        select: input_select.heating_bathroom_mode
+  - id: 0f54eec1-1d59-4be0-8594-0ced3877d2e7
+    alias: Handle Heating Florian Bedroom
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.chambre_florian
+        select: input_select.heating_florian_bedroom_mode
+  - id: c0ed6e33-483d-47e1-b497-9b4a9c6d829e
+    alias: Handle Heating Laundryroom
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.laverie
+        select: input_select.heating_laundryroom_mode
+  - id: 7bd2ed10-01e0-4b9a-af7a-8765c4a365df
+    alias: Handle Heating Girls Bedroom
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.chambre_filles
+        select: input_select.heating_bedroom_girls_mode
+  - id: fd6f1f94-0bb3-41bb-b91a-4896588b9431
+    alias: Handle Heating Cellar Bedroom
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.bureau_clement
+        select: input_select.heating_bedroom_cellar_mode
+  # - id: 0b3abedf-010c-488d-b237-b9c7455afeb8
+  #   alias: Handle Heating Melanie Office
+  #   description: ''
+  #   use_blueprint:
+  #     path: clempat/preset_climate.yaml
+  #     input:
+  #       climate: climate.bureau_melanie
+  #       select: input_select.heating_office_melanie_mode
+  - id: b54e5f22-6730-4895-bd8c-6bc2361f02ac
+    alias: Handle Heating Bedroom Roof
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.chambre_toit
+        select: input_select.heating_bedroom_roof_mode
+  - id: 8ce5ff33-b4ce-41df-beae-d6a0c2a2ad31
+    alias: Handle Heating Kitchen
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.cuisine
+        select: input_select.heating_kitchen_mode
+  - id: 221db0e1-8b14-489e-b41a-ca2f1d5969c8
+    alias: Handle Heating Entrance
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.entree
+        select: input_select.heating_entrance_mode
+  - id: e3b2b9dd-dcc7-4cb6-8280-2dba86ba7ee5
+    alias: Handle Heating Stairs
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.escalier
+        select: input_select.heating_stairs_mode
+  - id: 1e5e7465-7623-4687-aad4-b28989bab22c
+    alias: Handle Heating Mezzanine
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.mezzanine
+        select: input_select.heating_mezzanine_mode
+  - id: 1f6293d7-3ea5-4bb2-8adc-40d0efd44a9d
+    alias: Handle Heating Bathroom
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.salle_de_bain
+        select: input_select.heating_bathroom_mode
+  - id: a903aedc-d151-4481-8b53-6c8e419cb376
+    alias: Handle Heating Livingroom
+    description: ''
+    use_blueprint:
+      path: clempat/preset_climate.yaml
+      input:
+        climate: climate.salon
+        select: input_select.heating_livingroom_mode
+  # following is wrong as it would update all heating everytime - overwriting the potential change
+  - id: 36725bd9-7e39-4701-947f-530091e23916
+    description: Notify with an event any changes in presets for heating
+    alias: Heating >> Input Number change trigger
+    trigger:
+      platform: state
+      entity_id:
+        - input_number.heating_laundryroom_mode_confort
+        - input_number.heating_bedroom_girls_mode_confort
+        - input_number.heating_bedroom_cellar_mode_confort
+        - input_number.heating_florian_bedroom_mode_confort
+        - input_number.heating_office_melanie_mode_confort
+        - input_number.heating_bedroom_roof_mode_confort
+        - input_number.heating_kitchen_mode_confort
+        - input_number.heating_entrance_mode_confort
+        - input_number.heating_stairs_mode_confort
+        - input_number.heating_mezzanine_mode_confort
+        - input_number.heating_bathroom_mode_confort
+        - input_number.heating_livingroom_mode_confort
+        - input_number.heating_laundryroom_mode_eco
+        - input_number.heating_bedroom_girls_mode_eco
+        - input_number.heating_bedroom_cellar_mode_eco
+        - input_number.heating_florian_bedroom_mode_eco
+        - input_number.heating_office_melanie_mode_eco
+        - input_number.heating_bedroom_roof_mode_eco
+        - input_number.heating_kitchen_mode_eco
+        - input_number.heating_entrance_mode_eco
+        - input_number.heating_stairs_mode_eco
+        - input_number.heating_mezzanine_mode_eco
+        - input_number.heating_bathroom_mode_eco
+        - input_number.heating_livingroom_mode_eco
+        - input_select.heating_laundryroom_mode
+        - input_select.heating_bedroom_girls_mode
+        - input_select.heating_bedroom_cellar_mode
+        - input_select.heating_florian_bedroom_mode
+        - input_select.heating_office_melanie_mode
+        - input_select.heating_bedroom_roof_mode
+        - input_select.heating_kitchen_mode
+        - input_select.heating_entrance_mode
+        - input_select.heating_stairs_mode
+        - input_select.heating_mezzanine_mode
+        - input_select.heating_bathroom_mode
+        - input_select.heating_livingroom_mode
+    action:
+      - event: event_updates_presets_heating
+        event_data:
+          trigger: "{{ trigger }}"
+
+  - id: b79a2aaf-88a3-4ee6-84de-e0bd82442d59
+    alias: Heating >> Notify on windows open 30min
+    description: Will notify when a windows is open during 30 minutes
+    trigger:
+      platform: state
+      entity_id:
+        - binary_sensor.open_bathroom
+        - binary_sensor.open_clement_s_office
+        - binary_sensor.open_entrance
+        - binary_sensor.open_florian_s_bedroom
+        - binary_sensor.open_girls_bedroom
+        - binary_sensor.open_kitchen
+        - binary_sensor.open_livingroom
+        - binary_sensor.open_melanie_s_office
+        - binary_sensor.open_mezzanine
+        - binary_sensor.open_roof_bedroom
+      from: "off"
+      to: "on"
+      for:
+        minutes: 30
+    condition: 
+      not:
+        - condition: state
+          entity_id: input_select.heating_mode
+          state:  'Été'
+    action:
+      - alias: "Send Notification"
+        service: notify.mobiles
+        data:
+          title: "🪟🥶 Fenêtre ouverte"
+          message: "Fenêtre ouverte depuis 30 minutes dans \"{{ area_name(trigger.entity_id) }}\"!"
+          data:
+            group: 'open-windows'
+            tag: "open-windows-{{trigger.entity_id}}"
+
+  - id: d9457350-bc2a-477b-af4d-9d510c1ed1b2
+    alias: Heating >> Clear notification on windows closed
+    description: Will clear the notification if windows is closed
+    trigger:
+      platform: state
+      entity_id:
+        - binary_sensor.open_bathroom
+        - binary_sensor.open_clement_s_office
+        - binary_sensor.open_entrance
+        - binary_sensor.open_florian_s_bedroom
+        - binary_sensor.open_girls_bedroom
+        - binary_sensor.open_kitchen
+        - binary_sensor.open_livingroom
+        - binary_sensor.open_melanie_s_office
+        - binary_sensor.open_mezzanine
+        - binary_sensor.open_roof_bedroom
+      from: "on"
+      to: "off"
+    action:
+      - alias: "Send Notification"
+        service: notify.mobiles
+        data:
+          message: "clear_notification"
+          data:
+            tag: "open-windows-{{trigger.entity_id}}"
+        
