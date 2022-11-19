@@ -49,6 +49,7 @@ template:
     - name: Temperature Salon
       unique_id: ea82edfb-cfbb-4059-bacd-c3485a09ee8f
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -65,6 +66,7 @@ template:
     - name: Temperature Cuisine
       unique_id: f344b902-a713-4007-a1cf-cee36a6a1caf
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -81,6 +83,7 @@ template:
     - name: Temperature Bureau Melanie
       unique_id: a3e1fac3-33df-4c5a-a02e-2825a8d3b113
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -97,6 +100,7 @@ template:
     - name: Temperature Escalier
       unique_id: 6aa9d577-06e8-4494-b24f-295ec925bbce
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -113,6 +117,7 @@ template:
     - name: Temperature Bureau Clément
       unit_of_measurement: "°C"
       unique_id: 92f5f962-bcc8-4973-a1a4-0f958eaafc6b
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -129,6 +134,7 @@ template:
     - name: Temperature Chambre filles
       unique_id: c840d57b-a27d-497f-acd8-2debf05fc33a
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -145,6 +151,7 @@ template:
     - name: Temperature Chambre Florian
       unique_id: b7a0836d-d182-457b-9add-2362d83e692e
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -161,6 +168,7 @@ template:
     - name: Temperature Chambre Toit
       unique_id: e76e33ec-71c0-42e4-835e-2cb1cf6481b4
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -177,6 +185,7 @@ template:
     - name: Temperature Mezzanine
       unique_id: 2afff4cf-facf-4df2-b726-07ad14052903
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -193,6 +202,7 @@ template:
     - name: Temperature Laverie
       unique_id: 457f0fc6-c8cd-4496-9116-cb602c244f3d
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -209,6 +219,7 @@ template:
     - name: Temperature Salle de bain
       unique_id: 483f6233-c895-49ca-b916-0ce5b308c529
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -225,6 +236,7 @@ template:
     - name: Temperature Entrée
       unique_id: cc51b299-c556-4d4d-8562-c19b6860d494
       unit_of_measurement: "°C"
+      state_class: measurement
       state: >- 
         {%- macro getRoomTemperature(room) -%}
             {%- set data = namespace(temperatures=[]) -%}
@@ -243,6 +255,7 @@ template:
     - name: Humidité Salon
       unique_id: CC62254F-3173-457A-B6AA-B7BFD5CB549F
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
@@ -259,6 +272,7 @@ template:
     - name: Humidité Cuisine
       unique_id: 1E610545-D936-4899-A441-1D2698001226
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
@@ -275,6 +289,7 @@ template:
     - name: Humidité Bureau Melanie
       unique_id: 79F8C67F-E4E7-44B2-8375-3DE5C829F43C
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
@@ -291,6 +306,7 @@ template:
     - name: Humidité Escalier
       unique_id: 3BAB8BDA-69D3-4EDD-A443-848C237E8209
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
@@ -306,6 +322,7 @@ template:
         {{ getRoomHumidity("Escalier") }}
     - name: Humidité Bureau Clément
       unit_of_measurement: "%"
+      state_class: measurement
       unique_id: 6432C713-EA65-4C32-A45B-805AFA641CD3
       state: >- 
         {%- macro getRoomHumidity(room) -%}
@@ -323,6 +340,7 @@ template:
     - name: Humidité Chambre filles
       unique_id: A99897A2-B0D7-4E7F-876F-D7425FA98D43
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
@@ -339,6 +357,7 @@ template:
     - name: Humidité Chambre Florian
       unique_id: 37C83B33-0BFE-483D-9F0A-ED5A52479D50
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
@@ -355,6 +374,7 @@ template:
     - name: Humidité Chambre Toit
       unique_id: 328DEBEC-2E10-4579-9F2F-0AA4FA0D90BF
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
@@ -371,6 +391,7 @@ template:
     - name: Humidité Mezzanine
       unique_id: 7E474A51-AB5F-46E6-BDBA-65BDACF20A50
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
@@ -387,6 +408,7 @@ template:
     - name: Humidité Laverie
       unique_id: A8EDD59F-7CC5-4F18-8B22-765817BB7183
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
@@ -403,6 +425,7 @@ template:
     - name: Humidité Salle de bain
       unique_id: A35DD3B5-ABB4-4172-ACC4-155B7F109EB6
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
@@ -419,6 +442,7 @@ template:
     - name: Humidité Entrée
       unique_id: F08FD5FB-EBFA-4E12-AFF1-46D18237B240
       unit_of_measurement: "%"
+      state_class: measurement
       state: >- 
         {%- macro getRoomHumidity(room) -%}
             {%- set data = namespace(humidities=[]) -%}
