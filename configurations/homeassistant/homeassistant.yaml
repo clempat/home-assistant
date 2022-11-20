@@ -23,7 +23,7 @@ shell_command:
 logger:                                                                                                                                                                          
   default: warn
   logs:                                                                                                                                                                         
-    custom_cards.better_thermostat: debug
+    custom_components.better_thermostat: debug
   #  homeassistant.components.homekit_controller: debug                                                                                                                          
   #  aiohomekit: debug
 
