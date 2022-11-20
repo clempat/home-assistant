@@ -19,6 +19,7 @@ binary_sensor:
       - binary_sensor.x_window_livingroom_sofa
       - binary_sensor.x_window_mina_clara_bedroom_left
       - binary_sensor.x_window_mina_clara_bedroom_mid
+      - binary_sensor.x_window_bedroom_ground_floor
 
   - platform: group
     name: Doors
