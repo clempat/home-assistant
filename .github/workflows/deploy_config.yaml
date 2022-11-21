@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: check_ha_config
     steps:
-      - uses: joelwmale/webhook-action@2.1.0
+      - uses: joelwmale/webhook-action@2.3.2
         with:
           url: ${{ secrets.HASS_WEBHOOK_URL }}/update_config
           body: "{}"
