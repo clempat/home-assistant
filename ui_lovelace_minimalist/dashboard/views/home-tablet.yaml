@@ -55,6 +55,71 @@ cards:
               ulm_card_person_use_entity_picture: true
       - type: weather-forecast
         entity: weather.maison
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-template-card
+            entity: binary_sensor.washing_machine
+            icon: mdi:washing-machine
+            icon_color: |-
+              {% if is_state('binary_sensor.washing_machine', 'on') -%}
+                amber
+              {%- elif  is_state('input_boolean.washing_machine_full', 'on')-%}
+                red
+              {%- else -%}
+                grey
+              {%- endif %}
+            primary: |-
+              {% if is_state('input_boolean.washing_machine_full', 'on') -%}
+                Machine à Laver pleine
+              {%- else -%}
+                Machine à Laver
+              {%- endif %}
+            card_mod:
+              style:
+                mushroom-shape-icon$: |
+                  {% if is_state('binary_sensor.washing_machine', 'on') -%}
+                  ha-icon {
+                    --icon-animation: shake 400ms ease-in-out infinite, drum 2s ease infinite;
+                    transform-origin: 50% 110%;
+                  }
+                  @keyframes shake {
+                    0%, 100% { transform: translate(0, 0) rotate(0); }
+                    20%  { transform: translate(0.4px, -0.4px) rotate(-4deg); }
+                    40%  { transform: translate(-0.4px, 0.4px) rotate(4deg); }
+                    60%  { transform: translate(0.4px, 0.4px) rotate(-4deg); }
+                    80%  { transform: translate(-0.4px, -0.4px) rotate(4deg); }
+                  }
+                  @keyframes drum {
+                    50%  { clip-path: polygon(0 0, 0 100%, 35% 100%, 34% 68%, 60% 41%, 71% 56%, 65% 74%, 47% 79%, 32% 69%, 35% 100%, 100% 100%, 100% 0); }
+                  }
+                  {%- endif %}
+
+          - type: custom:mushroom-template-card
+            entity: binary_sensor.dryer
+            icon: mdi:tumble-dryer
+            icon_color: |-
+              {% if is_state('binary_sensor.washing_machine', 'on') -%}
+                amber
+              {%- else -%}
+                grey
+              {%- endif %}
+            primary: Sèche linge
+            card_mod:
+              style:
+                mushroom-shape-icon$: |
+                  {% if is_state('binary_sensor.dryer', 'on') -%}
+                  ha-icon {
+                    --icon-animation: shake 400ms ease-in-out infinite, drum 1s infinite;
+                    transform-origin: 50% 65%;
+                  }
+                  @keyframes shake {
+                    0%, 100% { transform: rotate(4deg); }
+                    50%  { transform: rotate(-4deg); }
+                  }
+                  @keyframes drum {
+                    50%  { clip-path: polygon(0 0, 0 100%, 35% 100%, 36% 74%, 31% 43%, 61% 40%, 71% 69%, 62% 78%, 36% 73%, 35% 100%, 100% 100%, 100% 0); }
+                  }
+                  {%- endif %}
 
   - type: vertical-stack
     cards:
