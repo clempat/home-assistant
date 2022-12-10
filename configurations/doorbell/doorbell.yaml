@@ -78,8 +78,9 @@ script:
             - media_player.sonos_roam 
             - media_player.kuche
             - media_player.wohnzimmer 
-          media_content_id: media-source://media_source/local/sounds/sncf_new.wav
+          media_content_id: x-file-cifs://192.168.30.4/media/music/sncf_new.wav
           media_content_type: music
+          enqueue: play
       - delay:
           seconds: 3
       - service: sonos.restore
